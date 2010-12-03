@@ -1,2 +1,2 @@
-recursive-include zetalinker *
+recursive-include zetalibrary *
 exclude *.pyc *.orig

@@ -1,7 +1,6 @@
 import os.path
 import unittest
-
-from zetalinker import route, Linker
+import sys
 
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
@@ -13,6 +12,9 @@ DONEJSFILE = os.path.join(RESDIR, '_test.js')
 TESTCSSFILE = os.path.join(RESDIR, 'test_css')
 TESTJSFILE = os.path.join(RESDIR, 'test_js')
 
+sys.path.insert(0, os.path.dirname(BASEDIR))
+from zetalibrary import route, Linker
+
 
 class TestLinker( unittest.TestCase ):
 
@@ -22,14 +24,14 @@ class TestLinker( unittest.TestCase ):
         self.assertTrue(JSFILE in result)
 
     def testjs( self ):
-        linker = Linker(JSFILE)
+        linker = Linker(JSFILE, no_comments=True)
         linker.link()
         test = open(TESTJSFILE).read()
         test_link = open(DONEJSFILE).read()
         self.assertEqual(test, test_link)
 
     def testcss( self ):
-        linker = Linker(CSSFILE)
+        linker = Linker(CSSFILE, no_comments=True)
         linker.link()
         test = open(TESTCSSFILE).read()
         test_link = open(DONECSSFILE).read()

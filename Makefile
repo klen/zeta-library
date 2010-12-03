@@ -1,4 +1,4 @@
-MODULE=zeta-linker
+MODULE=zeta-library
 
 clean:
 	sudo rm -rf build dist $(MODULE).egg-info/

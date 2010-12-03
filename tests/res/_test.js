@@ -1,4 +1,6 @@
-// '../../../../../usr/local/lib/python2.6/dist-packages/zetalinker/zetalib/base/jquery-1.4.4.min.js' from '../../../../../usr/local/lib/python2.6/dist-packages/zetalinker/zetalib/zeta.js'
+// ==============================
+// Zeta import: 'zetalibrary/zetalib/base/jquery-1.4.4.min.js'
+// From: 'zetalibrary/zetalib/zeta.js'
 /*!
  * jQuery JavaScript Library v1.4.4
  * http://jquery.com/
@@ -167,9 +169,10 @@ c.css(a,"position")==="static";)a=a.offsetParent;return a})}});c.each(["Left","T
 c.fn["inner"+b]=function(){return this[0]?parseFloat(c.css(this[0],d,"padding")):null};c.fn["outer"+b]=function(e){return this[0]?parseFloat(c.css(this[0],d,e?"margin":"border")):null};c.fn[d]=function(e){var f=this[0];if(!f)return e==null?null:this;if(c.isFunction(e))return this.each(function(l){var k=c(this);k[d](e.call(this,l,k[d]()))});if(c.isWindow(f))return f.document.compatMode==="CSS1Compat"&&f.document.documentElement["client"+b]||f.document.body["client"+b];else if(f.nodeType===9)return Math.max(f.documentElement["client"+
 b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documentElement["offset"+b]);else if(e===B){f=c.css(f,d);var h=parseFloat(f);return c.isNaN(h)?f:h}else return this.css(d,typeof e==="string"?e:e+"px")}})})(window);
 
-// '../../../../../usr/local/lib/python2.6/dist-packages/zetalinker/zetalib/base/base.js' from '../../../../../usr/local/lib/python2.6/dist-packages/zetalinker/zetalib/zeta.js'
-// usage: log('inside coolFunc',this,arguments);
-// paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+
+// ==============================
+// Zeta import: 'zetalibrary/zetalib/base/base.js'
+// From: 'zetalibrary/zetalib/zeta.js'
 window.log = function(){
   log.history = log.history || [];   // store logs to an array for reference
   log.history.push(arguments);
@@ -178,7 +181,6 @@ window.log = function(){
   }
 };
 
-// catch all document.write() calls
 (function(doc){
   var write = doc.write;
   doc.write = function(q){ 
@@ -187,15 +189,12 @@ window.log = function(){
   };
 })(document);
 
-// '../../../../../usr/local/lib/python2.6/dist-packages/zetalinker/zetalib/zeta.js' from '/home/klen/Projects/github.com/zeta-linker/tests/res/test.js'
-// Zeta base support
-// --------------------
 
-
-
+// ==============================
+// Zeta import: 'zetalibrary/zetalib/zeta.js'
+// From: '/home/klen/Projects/github.com/zeta-library/tests/res/test.js'
 ( function( $ ){
     
-    // Zeta
     Zeta = window.Zeta = {
 
         blocks: {},
@@ -234,8 +233,10 @@ window.log = function(){
 
 } )( jQuery );
 
-// '/home/klen/Projects/github.com/zeta-linker/tests/res/test.js' from 'None'
-// Base Zeta scripts
 
+// ==============================
+// Zeta import: '/home/klen/Projects/github.com/zeta-library/tests/res/test.js'
+// From: 'None'
 alert(1);
+
 

@@ -3,7 +3,8 @@ import os
 
 from setuptools import setup, find_packages
 
-from zetalinker import VERSION, PROJECT
+VERSION = '0.0.1'
+PROJECT = 'zeta-library'
 
 
 def read( fname ):
@@ -12,7 +13,7 @@ def read( fname ):
     except IOError:
         return ''
 
-MODULE_NAME = 'zetalinker'
+MODULE_NAME = 'zetalibrary'
 PACKAGE_DATA = []
 
 for root, dirs, files in os.walk( os.path.join( MODULE_NAME, 'zetalib' ) ):
@@ -38,9 +39,11 @@ META_DATA = dict(
 
     entry_points={
         'console_scripts': [
-            'zeta = zetalinker.parse:main',
+            'zeta = zetalibrary.parse:main',
         ]
     },
+
+    install_requires = [ 'cssmin', 'jsmin' ],
 )
 
 if __name__ == "__main__":
