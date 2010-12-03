@@ -24,7 +24,7 @@ META_DATA = dict(
     version=VERSION,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
-    license='Public domain',
+    license='GNU LGPL',
 
     author='Kirill Klenov',
     author_email='horneds@gmail.com',
