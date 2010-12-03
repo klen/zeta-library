@@ -24,13 +24,11 @@ Usage
 ------
 
 zeta-link ::
+
     Usage: zeta-link [--prefix PREFIX] FILENAME or DIRNAME
-
     Parse file or dir, import css, js code and save with prefix.
-
     Options:
     -h, --help            show this help message and exit
-    -p PREFIX, --prefix=PREFIX
-                            Save result with prefix. Default is '_'.
+    -p PREFIX, --prefix=PREFIX Save result with prefix. Default is '_'.
 
 .. _zeta-library: http://github.com/klen/zeta-library.git
