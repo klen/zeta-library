@@ -1,0 +1,2 @@
+recursive-include zetalinker *
+exclude *.pyc *.orig

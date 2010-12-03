@@ -1,0 +1,21 @@
+/* 'tests/res/blocks/b1/b12/b12.css' from 'tests/res/blocks/b1/b1.css' */
+.b12 {
+    color: #333;
+    background: url(blocks/b1/b12/test.png);
+}
+
+/* 'tests/res/blocks/b1/b1.css' from '/home/klen/Projects/github.com/zeta-library/tools/zetalinker/tests/res/test.css' */
+
+.test {
+    background: url(blocks/b1/lala.jpg);
+    margin: 0;
+}
+
+/* 'tests/res/other.css' from '/home/klen/Projects/github.com/zeta-library/tools/zetalinker/tests/res/test.css' */
+.other {
+    padding: 1em;
+}
+
+/* '/home/klen/Projects/github.com/zeta-library/tools/zetalinker/tests/res/test.css' from 'None' */
+
+
