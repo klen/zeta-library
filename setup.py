@@ -12,6 +12,12 @@ def read( fname ):
     except IOError:
         return ''
 
+MODULE_NAME = 'zetalinker'
+PACKAGE_DATA = []
+
+for root, dirs, files in os.walk( os.path.join( MODULE_NAME, 'zetalib' ) ):
+    for filename in files:
+        PACKAGE_DATA.append("%s/%s" % ( root[len(MODULE_NAME)+1:], filename ))
 
 META_DATA = dict(
     name=PROJECT,
@@ -28,10 +34,11 @@ META_DATA = dict(
     platforms=('Any'),
 
     packages=find_packages(),
+    package_data = { '': PACKAGE_DATA, },
 
     entry_points={
         'console_scripts': [
-            'zeta-link = zetalinker.parse:main',
+            'zeta = zetalinker.parse:main',
         ]
     },
 )

@@ -1,2 +1,5 @@
+/* Base zeta styles */
+@import url(zeta://zeta.css);
+
 @import url(blocks/b1/b1.css);
 @import url('other.css');

@@ -1,9 +1,9 @@
 ..   -*- mode: rst -*-
 
-zeta-linker
+zeta-library
 ############
 
-Zeta linker is script for collect js, css files. It's part of zeta-library_.
+*Zeta library* is framework for create and collect css, js files.
 
 .. contents::
 
@@ -16,14 +16,14 @@ Requirements
 Installation
 ------------
 
-**Zeta linker** should be installed using pip: ::
+**Zeta library** should be installed using pip: ::
 
-    pip install git+git://github.com/klen/zeta-linker.git
+    pip install git+git://github.com/klen/zeta-library.git
 
 Usage
 ------
 
-zeta-link ::
+zeta ::
 
     Usage: zeta-link [--prefix PREFIX] FILENAME or DIRNAME
     Parse file or dir, import css, js code and save with prefix.

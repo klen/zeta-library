@@ -1,3 +1,4 @@
-require("http://code.jquery.com/jquery-1.4.4.min.js");
+// Base Zeta scripts
+require('zeta://zeta.js');
 
 alert(1);

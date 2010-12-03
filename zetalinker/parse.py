@@ -4,6 +4,8 @@ import re
 import sys
 import urllib2
 
+BASEDIR = os.path.realpath(os.path.dirname(__file__))
+ZETALIBDIR = os.path.join(BASEDIR, 'zetalib')
 
 FORMATS = {
     'css': {
@@ -93,6 +95,10 @@ class Linker( object ):
 
         elif path.startswith('/'):
             return os.path.relpath(os.path.normpath(os.path.join(self.basedir, path)))
+
+        elif path.startswith('zeta://'):
+            path = path[7:]
+            return os.path.relpath(os.path.normpath(os.path.join(ZETALIBDIR, path)))
 
         return os.path.relpath(os.path.normpath(os.path.join(curdir, path)))
 
