@@ -1,9 +1,8 @@
 // Zeta base support
 // --------------------
 
-require("base/jquery-1.4.4.min.js");
-require("base/base.js");
-
+require("jquery.js");
+require("_.js");
 
 ( function( $ ){
     
