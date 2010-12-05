@@ -39,11 +39,11 @@ META_DATA = dict(
 
     entry_points={
         'console_scripts': [
-            'zeta = zetalibrary.parse:main',
+            'zeta = zetalibrary.main:main',
         ]
     },
 
-    install_requires = [ 'cssmin', 'jsmin' ],
+    install_requires = [ 'pyparsing' ]
 )
 
 if __name__ == "__main__":

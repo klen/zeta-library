@@ -1,5 +1,5 @@
 /* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/base/reset.css' */
+/* Zeta import: 'zetalibrary/zetalib/boilerplate/style.css' */
 /* From: 'zetalibrary/zetalib/zeta.css' */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,9 +52,9 @@ hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 
 input, select { vertical-align:middle; }
 
 
-/* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/base/fonts.css' */
-/* From: 'zetalibrary/zetalib/zeta.css' */
+
+
+
 body { font:13px/1.231 sans-serif; *font-size:small; } 
 
 select, input, textarea, button { font:99% sans-serif; }
@@ -63,9 +63,9 @@ select, input, textarea, button { font:99% sans-serif; }
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 
-/* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/base/base.css' */
-/* From: 'zetalibrary/zetalib/zeta.css' */
+
+
+
 body, select, input, textarea {
   
   color: #444;
@@ -155,9 +155,10 @@ button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
 
-/* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/base/helpers.css' */
-/* From: 'zetalibrary/zetalib/zeta.css' */
+
+
+
+
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 
 
@@ -185,9 +186,46 @@ button {  width: auto; overflow: visible; }
 .clearfix { zoom: 1; }
 
 
-/* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/base/print.css' */
-/* From: 'zetalibrary/zetalib/zeta.css' */
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (orientation:portrait) {
+  
+
+}
+
+@media all and (orientation:landscape) {
+  
+
+}
+
+
+@media screen and (max-device-width: 480px) {
+
+
+  
+}
+
+
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
   -ms-filter: none !important; } 
@@ -209,7 +247,7 @@ button {  width: auto; overflow: visible; }
 /* From: 'tests/res/blocks/b1/b1.css' */
 .b12 {
     color: #333;
-    background: url(blocks/b1/b12/test.png);
+    background: url(blocks/b1/b12/r);
 }
 
 
@@ -217,7 +255,7 @@ button {  width: auto; overflow: visible; }
 /* Zeta import: 'tests/res/blocks/b1/b1.css' */
 /* From: '/home/klen/Projects/github.com/zeta-library/tests/res/test.css' */
 .test {
-    background: url(blocks/b1/lala.jpg);
+    background: url(blocks/b1/r);
     margin: 0;
 }
 
