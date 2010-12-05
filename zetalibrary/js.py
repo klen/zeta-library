@@ -1,5 +1,5 @@
-from pyparsing import Suppress, SkipTo, Optional, SkipTo, Literal
+from pyparsing import SkipTo, Optional, Literal, cStyleComment, dblSlashComment
 
 
-LINE_COMMENT = Suppress("//") + SkipTo("\n")
+COMMENT = cStyleComment | dblSlashComment
 REQUIRE = Literal("require(") + SkipTo(")")("path") + Literal(")") + Optional(Literal(";"))

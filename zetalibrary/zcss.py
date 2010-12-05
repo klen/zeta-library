@@ -1,32 +1,36 @@
-from pyparsing import Word, Suppress, Literal, alphanums, alphas, hexnums, nums, SkipTo, oneOf, ZeroOrMore, Optional, Group, OneOrMore, Forward
+from pyparsing import Word, Suppress, Literal, alphanums, alphas, hexnums, nums, SkipTo, oneOf, ZeroOrMore, Optional, Group, OneOrMore, Forward, cStyleComment
 
-VAR_CONTEXT = dict()
+
+# Mixin and variables context
+GLOBAL_CONTEXT = dict()
+LOCAL_CONTEXT = dict()
 MIXIN_CONTEXT = dict()
 
+# Base css word and literals
 IDENT = Word(alphas + "_", alphanums + "_-")
 NAME = Word(alphanums + "_-")
 NUMBER = Word(nums + '.-')
-COMMA, COLON, SEMICOLON, LACC, RACC, LPAREN, RPAREN, LBRACK, RBRACK = map(Suppress, ",:;{}()[]")
-QUOTES = oneOf('" \'').suppress()
+COMMA, COLON, SEMICOLON = [Suppress(c) for c in ",:;"]
+LACC, RACC, LPAREN, RPAREN, LBRACK, RBRACK = [Suppress(c) for c in "{}()[]"]
 
-COMMENT_BEGIN = "/*"
-COMMENT_END = "*/"
-COMMENT = COMMENT_BEGIN + SkipTo(COMMENT_END) + COMMENT_END
+# Comment
+COMMENT = cStyleComment
 
+# Directives
 CDO = Literal("<!--")
 CDC = Literal("-->")
 INCLUDES = "~="
 DASHMATCH = "|="
+IMPORTANT_SYM = Literal("!") + Literal("important")
 IMPORT_SYM = Literal("@import")
 PAGE_SYM = Literal("@page")
 MEDIA_SYM = Literal("@media")
 FONT_FACE_SYM = Literal("@font-face")
 CHARSET_SYM = Literal("@charset")
-SASS_MIXIN_SYM = Suppress("@mixin")
-SASS_INCLUDE_SYM = Suppress("@include")
+MIXIN_SYM = Suppress("@mixin")
+INCLUDE_SYM = Suppress("@include")
 
-IMPORTANT_SYM = Literal("!") + Literal("important")
-
+# Property values
 HASH = Word('#', alphanums + "_-")
 HEXCOLOR = Literal("#") + Word(hexnums, min=3, max=6)
 EMS = NUMBER + Literal("em")
@@ -39,85 +43,103 @@ DIMEN = NUMBER + IDENT
 PERCENTAGE = NUMBER + Literal("%")
 URI = Literal("url(") + SkipTo(")")("path") + Literal(")")
 FUNCTION = IDENT + Literal("(")
+PRIO = IMPORTANT_SYM.suppress()
 
+# Operators
 OPERATOR = oneOf("/ ,")
-SASS_OPERATOR = oneOf("+ - / *")
+MATH_OPERATOR = oneOf("+ - / *")
 COMBINATOR = oneOf("+ >")
 UNARY_OPERATOR = oneOf("- +")
 
+# Simple selectors
 ELEMENT_NAME = IDENT | Literal("*")
 CLASS = Word('.', alphanums + "-_")
 ATTRIB = LBRACK + SkipTo("]") + RBRACK
 PSEUDO = Word(':', alphanums + "-_") | (COLON + FUNCTION + IDENT + RPAREN)
 
+# Selectors
 SELECTOR_FILTER = HASH | CLASS | ATTRIB | PSEUDO
 SELECTOR = (ELEMENT_NAME + SELECTOR_FILTER) | ELEMENT_NAME | SELECTOR_FILTER
 SELECTOR_TREE = Group(OneOrMore(Optional(COMBINATOR) + SELECTOR))
 SELECTOR_GROUP = Group(SELECTOR_TREE + ZeroOrMore(COMMA + SELECTOR_TREE))
 
-PRIO = IMPORTANT_SYM.suppress()
+# Variables
+VARIABLE = Suppress("$") + IDENT
+VAR_STRING = VARIABLE + ZeroOrMore(MATH_OPERATOR + NUMBER)
+def parse_variables(s, l, t):
+    value, units = LOCAL_CONTEXT.get(t[0]) or GLOBAL_CONTEXT.get(t[0], ('$'+t[0],''))
+    if len(t) > 1:
+        try:
+            value = str(eval(value + ''.join(t[1:])))
+        except SyntaxError:
+            return
+    return value + units
+VAR_STRING.setParseAction(parse_variables)
 
-SASS_VAR = Suppress("$") + IDENT
-def sassvar_parse( s, l, t ):
-    return VAR_CONTEXT.get(t[0], '')
-SASS_VAR.setParseAction(sassvar_parse)
-
+# Property values
 TERM = Group(Optional(UNARY_OPERATOR) + (( LENGTH | PERCENTAGE
             | FREQ | EMS | EXS | ANGLE | TIME | NUMBER
-        ) | IDENT | URI | HEXCOLOR | (SASS_VAR + Optional(SASS_OPERATOR + NUMBER))))
-
+        ) | IDENT | URI | HEXCOLOR | VAR_STRING))
 EXPR = TERM + ZeroOrMore(Optional(OPERATOR) + TERM)
-def parse_expr(s, l, t):
-    values = []
-    for ex in t:
-        if len(ex) < 4:
-            return
-        try:
-            value = str(eval(ex[0] + ''.join(ex[2:])))
-        except SyntaxError:
-            continue
-        values.append(value + ex[1])
-    return ' '.join(values)
-EXPR.setParseAction(parse_expr)
-
 DECLARATION = Group(NAME + COLON + EXPR + Optional(PRIO))
+# def parse_declarations(s, l, t):
+    # return ''
+# DECLARATION.setParseAction(parse_declarations)
 
-SASS_INCLUDE = Group(SASS_INCLUDE_SYM + IDENT("name") + Optional(LPAREN + EXPR + RPAREN)("value") + SEMICOLON)
+# Include
+INCLUDE_PARAMS = LPAREN + EXPR + RPAREN
+INCLUDE = Group(INCLUDE_SYM + IDENT("name") + Optional(INCLUDE_PARAMS)("params") + SEMICOLON)
 
-SASS_VAR_ASSIGMENT = Suppress("$") + IDENT + COLON + EXPR + Optional(PRIO) + SEMICOLON
-def sass_var_assigment_parse( s, l, t ):
+# Global variable assigment
+VARIABLE_ASSIGMENT = Suppress("$") + IDENT + COLON + EXPR + Optional(PRIO) + SEMICOLON
+def parse_variable_assigment( s, l, t ):
     name, value = t
-    if not VAR_CONTEXT.has_key(name):
-        VAR_CONTEXT[name] = list(value)
+    if not GLOBAL_CONTEXT.has_key(name):
+        GLOBAL_CONTEXT[name] = list(value)
     return ''
-SASS_VAR_ASSIGMENT.setParseAction(sass_var_assigment_parse)
+VARIABLE_ASSIGMENT.setParseAction(parse_variable_assigment)
 
+# Ruleset
 RULESET = Forward()
-RULESET << ( SELECTOR_GROUP("selectors") + LACC + ZeroOrMore(DECLARATION + Optional(SEMICOLON))("declarations") + ZeroOrMore(SASS_INCLUDE)("includes") + ZeroOrMore(RULESET)("rulesets") + RACC )
-def ruleset_parse(s, l, t):
+RULESET << (
+        SELECTOR_GROUP("selectors") +
+        LACC +
+        ZeroOrMore(DECLARATION + Optional(SEMICOLON))("declarations") +
+        ZeroOrMore(INCLUDE)("includes") +
+        ZeroOrMore(RULESET)("rulesets") +
+        RACC )
+def parse_ruleset(s, l, t):
     head = __render_selectors(t.selectors)
     body = __render_declarations(t.declarations) + __render_declaration_includes(t.includes)
     out = ''
     if body:
         out += head + '{' + body + '}\n\n'
     return out + __render_ruleset_includes(head, t.includes) + __render_rulesets(head, t.rulesets)
-RULESET.setParseAction(ruleset_parse)
-RULESET.ignore(COMMENT)
+RULESET.setParseAction(parse_ruleset)
 
-SASS_MIXIN = SASS_MIXIN_SYM + IDENT + Optional(LPAREN + Suppress("$") + IDENT("var") + RPAREN) + LACC + ZeroOrMore(DECLARATION + Optional(SEMICOLON))("declarations") + ZeroOrMore(RULESET)("rulesets") + RACC
+# Mixins
+MIXIN_PARAMS = LPAREN + VARIABLE + RPAREN
+def parse_mixin_params(s, l, t):
+    LOCAL_CONTEXT[t[0]] = ("&", t[0])
+MIXIN_PARAMS.setParseAction(parse_mixin_params)
+MIXIN = ( MIXIN_SYM + IDENT +
+    Optional(MIXIN_PARAMS) +
+    LACC +
+    ZeroOrMore(DECLARATION + Optional(SEMICOLON))("declarations") +
+    ZeroOrMore(RULESET)("rulesets") +
+    RACC )
 def parse_mixin(s, l, t):
     name = t[0]
     if not MIXIN_CONTEXT.has_key(name):
         MIXIN_CONTEXT[name] = {
-            'var': t.var,
             'declarations': t.declarations,
             'rulesets': t.rulesets }
+    print MIXIN_CONTEXT
     return ''
-SASS_MIXIN.setParseAction(parse_mixin)
+MIXIN.setParseAction(parse_mixin)
 
 IMPORT = IMPORT_SYM + URI + Optional(IDENT + ZeroOrMore(IDENT)) + SEMICOLON
-MEDIA = MEDIA_SYM + IDENT + ZeroOrMore(COMMA + IDENT) + LACC + ZeroOrMore( RULESET | SASS_MIXIN ) + RACC
-MEDIA.ignore(COMMENT)
+MEDIA = MEDIA_SYM + IDENT + ZeroOrMore(COMMA + IDENT) + LACC + ZeroOrMore( RULESET | MIXIN ) + RACC
 FONT_FACE = FONT_FACE_SYM + LACC + DECLARATION + ZeroOrMore(SEMICOLON + DECLARATION) + RACC
 PSEUDO_PAGE = ":" + IDENT
 PAGE = PAGE_SYM + Optional(IDENT) + Optional(PSEUDO_PAGE) + LACC + DECLARATION + ZeroOrMore(SEMICOLON + DECLARATION) + RACC
@@ -127,10 +149,11 @@ STYLESHEET = (
         ZeroOrMore(CDC | CDO) +
         ZeroOrMore(IMPORT + Optional(ZeroOrMore(CDC | CDO))) +
         ZeroOrMore(
-            ( SASS_VAR_ASSIGMENT | RULESET | MEDIA | PAGE | FONT_FACE | SASS_MIXIN ) +
+            ( VARIABLE_ASSIGMENT | MIXIN | RULESET | MEDIA | PAGE | FONT_FACE ) +
             ZeroOrMore(CDC | CDO)
         )
-)
+).ignore(COMMENT)
+
 
 def __render_selectors( selector_group ):
     selectors = []
@@ -177,3 +200,41 @@ def __render_rulesets( head, rulesets ):
     for ruleset in rulesets:
         out += head + ruleset
     return out
+
+if __name__ == '__main__':
+    print STYLESHEET.transformString("""
+
+$blue: #3bbfce;
+$margin: 16px;
+
+.content-navigation {
+  border-color: $blue;
+  color: $blue;
+  border-bottom: $green;
+}
+
+@mixin left($dist) {
+  float: left;
+  margin-left: $dist;
+}
+
+.border {
+  padding: $margin / 2;
+  margin: $margin / 2 $margin + 6;
+  border-color: $blue;
+}
+
+@mixin table-base {
+  th {
+    text-align: center;
+    font-weight: bold;
+  }
+  /* test comment */
+  td, th {padding: 2px}
+}
+
+#data {
+  @include left(10px);
+  @include table-base;
+}
+    """)

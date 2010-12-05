@@ -4,7 +4,7 @@ import os.path
 import sys
 import urllib2
 
-from zetalibrary.js import REQUIRE, LINE_COMMENT as JS_COMMENT
+from zetalibrary.js import REQUIRE, COMMENT as JS_COMMENT
 from zetalibrary.zcss import IMPORT as CSS_IMPORT, COMMENT as CSS_COMMENT, URI as CSS_LINK, Group
 
 
