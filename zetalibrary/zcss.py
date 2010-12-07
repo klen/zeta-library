@@ -1,5 +1,4 @@
 from pyparsing import Word, Suppress, Literal, alphanums, alphas, hexnums, nums, SkipTo, oneOf, ZeroOrMore, Optional, Group, OneOrMore, Forward, cStyleComment
-import ipdb as pdb
 
 # Mixin and variables context
 GLOBAL_CONTEXT = dict()
