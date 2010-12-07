@@ -2,14 +2,16 @@
 // --------------------
 
 require("jquery.js");
-require("_.js");
+
 
 ( function( $ ){
     
     // Zeta
-    Zeta = window.Zeta = {
+    zeta = window.zeta = {
 
         blocks: {},
+
+        history: [],
 
         blockInit: function( context, selector ) {
 
@@ -25,7 +27,7 @@ require("_.js");
 
                     name = params.name || this.className.split(' ')[0] || '',
 
-                    init = Zeta.blocks[name];
+                    init = zeta.blocks[name];
 
                 if (init && !block.data(name)) {
 
@@ -41,6 +43,13 @@ require("_.js");
         }
     };
 
-    $(document).ready(function(){ Zeta.blockInit() });
+    zeta.log = function(){
+        zeta.push(arguments);
+        if(window.console) window.console.log(Array.prototype.slice.call(arguments));
+    };
+
+    document.documentElement.className += 'js'
+
+    $(document).ready(function(){ zeta.blockInit() });
 
 } )( jQuery );
