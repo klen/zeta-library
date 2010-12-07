@@ -41,6 +41,6 @@ require("_.js");
         }
     };
 
-    $(document).ready(Zeta.blockInit);
+    $(document).ready(function(){ Zeta.blockInit() });
 
 } )( jQuery );
