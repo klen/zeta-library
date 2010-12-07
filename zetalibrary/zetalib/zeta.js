@@ -44,7 +44,7 @@ require("jquery.js");
     };
 
     zeta.log = function(){
-        zeta.push(arguments);
+        zeta.history.push(arguments);
         if(window.console) window.console.log(Array.prototype.slice.call(arguments));
     };
 
