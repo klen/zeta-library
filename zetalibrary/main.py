@@ -214,7 +214,7 @@ def main():
 
     parser.add_option(
         '-n', '--no-comments', action='store_true', dest='no_comments',
-        help="Save result with prefix. Default is '_'.")
+        help="Clear comments.")
 
     options, args = parser.parse_args()
     if len(args) != 1:
