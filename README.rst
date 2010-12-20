@@ -18,7 +18,7 @@ Installation
 
 **Zeta library** should be installed using pip: ::
 
-    pip install git+git://github.com/klen/zeta-library.git
+    pip install zetalibrary
 
 Usage
 ------
