@@ -1,4 +1,3 @@
-""" Base zeta linker.  """
 import optparse
 import os.path
 import sys

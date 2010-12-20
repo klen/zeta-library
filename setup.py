@@ -3,8 +3,7 @@ import os
 
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
-PROJECT = 'zeta-library'
+from zetalibrary import VERSION, PROJECT, LICENSE
 
 
 def read( fname ):
@@ -13,26 +12,34 @@ def read( fname ):
     except IOError:
         return ''
 
-MODULE_NAME = 'zetalibrary'
 PACKAGE_DATA = []
 
-for root, dirs, files in os.walk( os.path.join( MODULE_NAME, 'zetalib' ) ):
+for root, dirs, files in os.walk( os.path.join( PROJECT, 'zetalib' ) ):
     for filename in files:
-        PACKAGE_DATA.append("%s/%s" % ( root[len(MODULE_NAME)+1:], filename ))
+        PACKAGE_DATA.append("%s/%s" % ( root[len(PROJECT)+1:], filename ))
 
 META_DATA = dict(
     name=PROJECT,
     version=VERSION,
+    license=LICENSE,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
-    license='GNU LGPL',
+    platforms=('Any'),
 
     author='Kirill Klenov',
     author_email='horneds@gmail.com',
-
     url=' http://github.com/klen/zeta-library',
 
-    platforms=('Any'),
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Natural Language :: Russian',
+        'Natural Language :: English',
+        'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
+        'Programming Language :: Python',
+        'Environment :: Console',
+        'Topic :: Software Development :: Code Generators',
+    ],
 
     packages=find_packages(),
     package_data = { '': PACKAGE_DATA, },
@@ -43,7 +50,7 @@ META_DATA = dict(
         ]
     },
 
-    install_requires = [ 'pyparsing' ]
+    install_requires = [ 'scss' ]
 )
 
 if __name__ == "__main__":

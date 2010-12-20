@@ -152,37 +152,16 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
 
 // ==============================
-// Zeta import: 'zetalibrary/zetalib/_.js'
-// From: 'zetalibrary/zetalib/zeta.js'
-window.log = function(){
-  log.history = log.history || [];   
-  log.history.push(arguments);
-  if(this.console){
-    console.log( Array.prototype.slice.call(arguments) );
-  }
-};
-
-(function(doc){
-    
-    var write = doc.write;
-    doc.write = function(q){ 
-        log('document.write(): ',arguments); 
-        if (/docwriteregexwhitelist/.test(q)) write.apply(doc,arguments);  
-    };
-    
-    doc.documentElement.className += 'js'
-})(document);
-
-
-// ==============================
 // Zeta import: 'zetalibrary/zetalib/zeta.js'
 // From: '/home/klen/Projects/github.com/zeta-library/tests/res/test.js'
 ( function( $ ){
     
     
-    Zeta = window.Zeta = {
+    zeta = window.zeta = {
 
         blocks: {},
+
+        history: [],
 
         blockInit: function( context, selector ) {
 
@@ -198,7 +177,7 @@ window.log = function(){
 
                     name = params.name || this.className.split(' ')[0] || '',
 
-                    init = Zeta.blocks[name];
+                    init = zeta.blocks[name];
 
                 if (init && !block.data(name)) {
 
@@ -214,7 +193,14 @@ window.log = function(){
         }
     };
 
-    $(document).ready(Zeta.blockInit);
+    zeta.log = function(){
+        zeta.history.push(arguments);
+        if(window.console) window.console.log(Array.prototype.slice.call(arguments));
+    };
+
+    document.documentElement.className += 'js'
+
+    $(document).ready(function(){ zeta.blockInit() });
 
 } )( jQuery );
 
