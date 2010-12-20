@@ -154,9 +154,13 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 // ==============================
 // Zeta import: 'zetalibrary/zetalib/zeta.js'
 // From: '/home/klen/Projects/github.com/zeta-library/tests/res/test.js'
+// Zeta base support
+// --------------------
+
+
 ( function( $ ){
     
-    
+    // Zeta
     zeta = window.zeta = {
 
         blocks: {},
@@ -208,6 +212,8 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 // ==============================
 // Zeta import: '/home/klen/Projects/github.com/zeta-library/tests/res/test.js'
 // From: 'None'
+// Base Zeta scripts
+
 alert(1);
 
 

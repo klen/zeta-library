@@ -2,27 +2,24 @@ import optparse
 import os.path
 import sys
 import urllib2
-
-from zetalibrary.js import REQUIRE, COMMENT as JS_COMMENT
-from zetalibrary.zcss import IMPORT as CSS_IMPORT, COMMENT as CSS_COMMENT, URI as CSS_LINK, Group
-
+import re
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
 ZETALIBDIR = os.path.join(BASEDIR, 'zetalib')
 
 CSS_PARAMS = dict(
-    import_parser = CSS_IMPORT,
-    comment_parser = CSS_COMMENT,
+    import_parser = re.compile(r'^\@import +url\(\s*["\']?([^\)\'\"]+)["\']?\s*\)\s*;?\s*$', re.MULTILINE),
+    comment_parser = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/'),
     comment_template = '/* %s */\n',
-    link_parser = CSS_LINK,
+    link_parser = re.compile(r'url\(\s*["\']?([^\)\'\"]+)["\']?\)'),
     link_template = "url(%s)",
     link_ignore = ('data:image', 'http://', 'https://'),
 )
 
 JS_PARAMS = dict(
-    import_parser = REQUIRE,
+    import_parser = re.compile(r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\)\s*;?\s*$', re.MULTILINE),
+    comment_parser = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/'),
     comment_template = '// %s\n',
-    comment_parser = JS_COMMENT,
 )
 
 FORMATS = dict(css=CSS_PARAMS, js=JS_PARAMS)
@@ -91,8 +88,8 @@ class Linker( object ):
 
         curdir = os.path.relpath(os.path.dirname(path))
 
-        def children(s, l, t):
-            child_path = t[0].path.strip("'\"")
+        def children(obj):
+            child_path = obj.group(1)
             child_path = self.parse_path(child_path, curdir)
             try:
                 if child_path in self.imported:
@@ -104,8 +101,8 @@ class Linker( object ):
             except OSError:
                 self.out("%s: import file '%s' does not exist." % (path, child_path), error=True)
 
-        def links(s, l, t):
-            link_path = t[0][0][1].strip("'\"")
+        def links(obj):
+            link_path = obj.group(1)
             if self.params.get('link_ignore'):
                 for ignore in self.params['link_ignore']:
                     if link_path.startswith(ignore):
@@ -115,14 +112,18 @@ class Linker( object ):
             except OSError:
                 self.out('Url error: [%s] -- %s' % (curdir, path), error=True)
 
-        import_parser = Group(self.params['import_parser']).setParseAction(children)
-        parser = import_parser
-        if self.params.has_key('link_parser'):
-            parser = parser | Group(self.params['link_parser']).setParseAction(links)
-        if self.no_comments and self.params.has_key('comment_parser'):
-            parser = parser | self.params['comment_parser'].suppress()
+        # Parse src
+        import_parser = self.params['import_parser']
+        src = import_parser.sub(children, src)
 
-        src = parser.transformString(src)
+        if self.params.has_key('link_parser'):
+            link_parser = self.params['link_parser']
+            src = link_parser.sub(links, src)
+
+        if self.no_comments and self.params.has_key('comment_parser'):
+            comment_parser = self.params['comment_parser']
+            src = comment_parser.sub('', src)
+
         self.tree.append(dict(src=src, parent=parent, current=path))
 
     def parse_path(self, path, curdir):

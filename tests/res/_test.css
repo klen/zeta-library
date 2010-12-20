@@ -247,7 +247,7 @@ button {  width: auto; overflow: visible; }
 /* From: 'tests/res/blocks/b1/b1.css' */
 .b12 {
     color: #333;
-    background: url(blocks/b1/b12/r);
+    background: url(blocks/b1/b12/test.png);
 }
 
 
@@ -255,7 +255,7 @@ button {  width: auto; overflow: visible; }
 /* Zeta import: 'tests/res/blocks/b1/b1.css' */
 /* From: '/home/klen/Projects/github.com/zeta-library/tests/res/test.css' */
 .test {
-    background: url(blocks/b1/r);
+    background: url(blocks/b1/lala.jpg);
     margin: 0;
 }
 

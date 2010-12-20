@@ -13,7 +13,7 @@ TESTCSSFILE = os.path.join(RESDIR, 'test_css')
 TESTJSFILE = os.path.join(RESDIR, 'test_js')
 
 sys.path.insert(0, os.path.dirname(BASEDIR))
-from zetalibrary import route, Linker
+from zetalibrary.main import route, Linker
 
 
 class TestLinker( unittest.TestCase ):

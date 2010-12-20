@@ -1,4 +1,3 @@
 Add SCSS parser
 Get compass library
 Create custom zeta format file with css and js blocks
-Add this to pypi.python.org
