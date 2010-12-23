@@ -3,12 +3,13 @@ import os.path
 import sys
 import urllib2
 import re
+from scss import parser
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
 ZETALIBDIR = os.path.join(BASEDIR, 'zetalib')
 
 CSS_PARAMS = dict(
-    import_parser = re.compile(r'^\@import +url\(\s*["\']?([^\)\'\"]+)["\']?\s*\)\s*;?\s*$', re.MULTILINE),
+    import_parser = re.compile(r'^\s*@import +url\(\s*["\']?([^\)\'\"]+)["\']?\s*\)\s*;?\s*$', re.MULTILINE),
     comment_parser = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/'),
     comment_template = '/* %s */\n',
     link_parser = re.compile(r'url\(\s*["\']?([^\)\'\"]+)["\']?\)'),
@@ -16,13 +17,16 @@ CSS_PARAMS = dict(
     link_ignore = ('data:image', 'http://', 'https://'),
 )
 
+SCSS_PARAMS = dict(CSS_PARAMS)
+SCSS_PARAMS['parser'] = parser.parse
+
 JS_PARAMS = dict(
     import_parser = re.compile(r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\)\s*;?\s*$', re.MULTILINE),
     comment_parser = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/'),
     comment_template = '// %s\n',
 )
 
-FORMATS = dict(css=CSS_PARAMS, js=JS_PARAMS)
+FORMATS = dict(css=CSS_PARAMS, scss=SCSS_PARAMS, js=JS_PARAMS)
 
 
 class LinkerError( Exception ):
@@ -52,7 +56,9 @@ class Linker( object ):
         self.out("Packing '%s'." % self.path)
         self.parse_tree(self.path)
         out = ''
+        filetypes = set()
         for item in self.tree:
+            filetypes.add(item['filetype'])
             src = item['src'].strip()
             if not src:
                 continue
@@ -64,8 +70,14 @@ class Linker( object ):
                 "\n\n\n",
             ])
 
+        for filetype in filetypes:
+            parser = FORMATS[filetype].get('parser')
+            if parser:
+                out = parser(out)
+
         pack_name = self.prefix + os.path.basename(self.path)
         pack_path = os.path.join(self.basedir, pack_name)
+
         try:
             open(pack_path, 'w').write(out)
             self.out("Linked file saved as: '%s'." % pack_path)
@@ -124,7 +136,7 @@ class Linker( object ):
             comment_parser = self.params['comment_parser']
             src = comment_parser.sub('', src)
 
-        self.tree.append(dict(src=src, parent=parent, current=path))
+        self.tree.append(dict(src=src, parent=parent, current=path, filetype=filetype))
 
     def parse_path(self, path, curdir):
         """ Parse path.

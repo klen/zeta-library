@@ -1,10 +1,10 @@
 // Zeta base support
 // --------------------
 
-require("jquery.js");
+require("f/jquery.js");
 
 
-( function( $ ){
+(function($){
     
     // Zeta
     zeta = window.zeta = {
@@ -13,7 +13,7 @@ require("jquery.js");
 
         history: [],
 
-        blockInit: function( context, selector ) {
+        blockInit: function(context, selector) {
 
             context = context || document;
 
@@ -52,4 +52,4 @@ require("jquery.js");
 
     $(document).ready(function(){ zeta.blockInit() });
 
-} )( jQuery );
+})(jQuery);

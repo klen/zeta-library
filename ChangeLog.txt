@@ -1,3 +1,9 @@
+## 2010-12-23 0.1.0
+
+* Add scss support
+* Parse JS perfomance improve
+
+
 ## 2010-12-20 0.0.3
 
 * Public in pypi

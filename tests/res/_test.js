@@ -1,5 +1,5 @@
 // ==============================
-// Zeta import: 'zetalibrary/zetalib/jquery.js'
+// Zeta import: 'zetalibrary/zetalib/f/jquery.js'
 // From: 'zetalibrary/zetalib/zeta.js'
 (function(E,B){function ka(a,b,d){if(d===B&&a.nodeType===1){d=a.getAttribute("data-"+b);if(typeof d==="string"){try{d=d==="true"?true:d==="false"?false:d==="null"?null:!c.isNaN(d)?parseFloat(d):Ja.test(d)?c.parseJSON(d):d}catch(e){}c.data(a,b,d)}else d=B}return d}function U(){return false}function ca(){return true}function la(a,b,d){d[0].type=a;return c.event.handle.apply(b,d)}function Ka(a){var b,d,e,f,h,l,k,o,x,r,A,C=[];f=[];h=c.data(this,this.nodeType?"events":"__events__");if(typeof h==="function")h=
 h.events;if(!(a.liveFired===this||!h||!h.live||a.button&&a.type==="click")){if(a.namespace)A=RegExp("(^|\\.)"+a.namespace.split(".").join("\\.(?:.*\\.)?")+"(\\.|$)");a.liveFired=this;var J=h.live.slice(0);for(k=0;k<J.length;k++){h=J[k];h.origType.replace(X,"")===a.type?f.push(h.selector):J.splice(k--,1)}f=c(a.target).closest(f,a.currentTarget);o=0;for(x=f.length;o<x;o++){r=f[o];for(k=0;k<J.length;k++){h=J[k];if(r.selector===h.selector&&(!A||A.test(h.namespace))){l=r.elem;e=null;if(h.preType==="mouseenter"||
@@ -158,7 +158,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 // --------------------
 
 
-( function( $ ){
+(function($){
     
     // Zeta
     zeta = window.zeta = {
@@ -167,7 +167,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
         history: [],
 
-        blockInit: function( context, selector ) {
+        blockInit: function(context, selector) {
 
             context = context || document;
 
@@ -206,7 +206,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
     $(document).ready(function(){ zeta.blockInit() });
 
-} )( jQuery );
+})(jQuery);
 
 
 // ==============================

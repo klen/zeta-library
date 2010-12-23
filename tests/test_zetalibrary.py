@@ -18,26 +18,33 @@ from zetalibrary.main import route, Linker
 
 class TestLinker( unittest.TestCase ):
 
-    def testroute( self ):
+    def testroute(self):
         result = list(route(RESDIR))
         self.assertTrue(CSSFILE in result)
         self.assertTrue(JSFILE in result)
         result = route(CSSFILE)
         self.assertTrue(CSSFILE in result)
 
-    def testcss( self ):
+    def testcss(self):
         linker = Linker(CSSFILE, no_comments=True)
         linker.link()
         test = open(TESTCSSFILE).read()
         test_link = open(DONECSSFILE).read()
         self.assertEqual(test, test_link)
 
-    def testjs( self ):
+    def testjs(self):
         linker = Linker(JSFILE, no_comments=True)
         linker.link()
         test = open(TESTJSFILE).read()
         test_link = open(DONEJSFILE).read()
         self.assertEqual(test, test_link)
+
+    def test_blueprint_project(self):
+        folder = os.path.join(BASEDIR, 'zeta_project')
+        f = os.path.join(folder, 'main.css')
+        linker = Linker(f, no_comments=True)
+        linker.link()
+
 
 
 if __name__ == "__main__":

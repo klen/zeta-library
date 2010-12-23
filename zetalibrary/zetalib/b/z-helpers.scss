@@ -1,0 +1,42 @@
+// For IE has_layout
+@mixin z-has-layout {
+    zoom: 1; }
+
+
+// For image replacement
+@mixin z-ir {
+    display: block;
+    text-indent: -999em;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    text-align: left;
+    direction: ltr; }
+
+
+// For float
+@mixin z-float($side: left) {
+  display: inline;
+  float: $side; }
+
+@mixin z-float-left {
+    @include z-float(left); }
+
+@mixin z-float-right {
+    @include z-float(right); }
+
+
+// For clearfix
+@mixin z-clearfix {
+    overflow: hidden;
+    @include z-has-layout; }
+
+
+// For hidden from both screenreaders and browsers
+@mixin z-hidden {
+    display: none;
+    visibility: hidden; }
+
+
+// Hide visually and from screenreaders, but maintain layout
+@mixin z-invisible {
+    visibility: hidden; }

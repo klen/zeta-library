@@ -162,14 +162,3 @@ a:link {
 button {
 	overflow: visible;
 	width: auto}
-
-.b12 {
-	background: url(blocks/b1/b12/test.png);
-	color: #333}
-
-.test {
-	background: url(blocks/b1/lala.jpg);
-	margin: 0}
-
-.other {
-	padding: 1em}
