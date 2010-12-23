@@ -1,7 +1,8 @@
-## 2010-12-23 0.1.0
+## 2010-12-23 0.1.1
 
 * Add scss support
 * Parse JS perfomance improve
+* Some frameworks fixes
 
 
 ## 2010-12-20 0.0.3
