@@ -1,4 +1,3 @@
-Add SCSS parser
-Get compass library
+Partitial render scss
 Add framework list (see compass)
 Create custom zeta format file with css and js blocks

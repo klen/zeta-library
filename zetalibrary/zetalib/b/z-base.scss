@@ -10,8 +10,7 @@ $base-font: Georgia !default;
 @mixin z-fonts {
     body { font:13px/1.231 sans-serif; *font-size:small; }
     select, input, textarea, button { font:99% sans-serif; }
-    pre, code, kbd, samp { font-family: monospace, sans-serif; }
-}
+    pre, code, kbd, samp { font-family: monospace, sans-serif; } }
 
 @mixin z-base-form {
     // www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars
@@ -34,6 +33,9 @@ $base-font: Georgia !default;
     label, input[type="button"], input[type="submit"], input[type="image"], button {
         cursor: pointer; }
 
+    label {
+        font-weight:bold; }
+
     // webkit browsers add a 2px margin outside the chrome of form elements
     button, input, select, textarea {
         margin: 0; }
@@ -44,9 +46,7 @@ $base-font: Georgia !default;
         border-radius: 1px;
         -moz-box-shadow: 0px 0px 5px red;
         -webkit-box-shadow: 0px 0px 5px red;
-        box-shadow: 0px 0px 5px red; }
-    
-}
+        box-shadow: 0px 0px 5px red; } }
 
 @mixin z-base {
 
@@ -121,6 +121,4 @@ $base-font: Georgia !default;
 
     // make buttons play nice in IE:
     button {
-        width: auto; overflow: visible; }
-
-}
+        width: auto; overflow: visible; } }

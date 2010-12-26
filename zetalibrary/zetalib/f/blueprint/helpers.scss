@@ -1,0 +1,21 @@
+// For float
+@mixin float($side: left) {
+  display: inline;
+  float: $side; }
+
+@mixin float-left {
+    @include z-float(left); }
+
+@mixin float-right {
+    @include z-float(right); }
+
+// For clearfix
+@mixin clearfix {
+    overflow: hidden;
+    @include has-layout; }
+
+// For IE has_layout
+@mixin has-layout {
+    zoom: 1; }
+
+@mixin nowrap { white-space: nowrap; }

@@ -1,0 +1,43 @@
+$z-grid-columns: 24 !default;
+$z-grid-width: 40px !default;
+
+
+@mixin z-grid {
+
+    .container {
+        width:$z-grid-width * $z-grid-columns - 10px;
+        margin:0 auto; }
+
+    .column, #{enumerate(.span-, 1, $z-grid-columns)} {
+        float: left;
+        margin-right: 10px; }
+
+    @for $i from 1 through $z-grid-columns {
+        input.span-#{$i}, textarea.span-#{$i} { width: $i*$z-grid-width - 22px }
+        .span-#{$i} { width: $i*$z-grid-width - 10px } }
+
+    .span-#{$z-grid-columns} {
+        margin-right:0; }
+
+    #{enumerate(input.span-, 1, $z-grid-columns)}, #{enumerate(textarea.span-, 1, $z-grid-columns)} {
+	border-left-width: 1px;
+	border-right-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px }
+
+    .last {
+        margin-right:0; }
+
+    @for $i from 1 through $z-grid-columns {
+        .append-#{$i} { padding-right: $i*$z-grid-width }
+        .prepend-#{$i} { padding-left: $i*$z-grid-width }
+        .pull-#{$i} { margin-left: $i*(0-$z-grid-width) }
+        .push-#{$i} { margin: 0 $i*(0-$z-grid-width) 0 $i*$z-grid-width }
+    }
+
+    #{enumerate(.pull-, 1, $z-grid-columns)} {
+        float:left; 
+        position: relative; }
+
+    .border {padding-right:4px;margin-right:5px;border-right:1px solid #ddd;}
+    .colborder {padding-right:24px;margin-right:25px;border-right:1px solid #ddd;} }

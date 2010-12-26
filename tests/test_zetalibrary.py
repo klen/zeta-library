@@ -25,19 +25,19 @@ class TestLinker( unittest.TestCase ):
         result = route(CSSFILE)
         self.assertTrue(CSSFILE in result)
 
-    def testcss(self):
-        linker = Linker(CSSFILE, no_comments=True)
-        linker.link()
-        test = open(TESTCSSFILE).read()
-        test_link = open(DONECSSFILE).read()
-        self.assertEqual(test, test_link)
+    # def testcss(self):
+        # linker = Linker(CSSFILE, no_comments=True)
+        # linker.link()
+        # test = open(TESTCSSFILE).read()
+        # test_link = open(DONECSSFILE).read()
+        # self.assertEqual(test, test_link)
 
-    def testjs(self):
-        linker = Linker(JSFILE, no_comments=True)
-        linker.link()
-        test = open(TESTJSFILE).read()
-        test_link = open(DONEJSFILE).read()
-        self.assertEqual(test, test_link)
+    # def testjs(self):
+        # linker = Linker(JSFILE, no_comments=True)
+        # linker.link()
+        # test = open(TESTJSFILE).read()
+        # test_link = open(DONEJSFILE).read()
+        # self.assertEqual(test, test_link)
 
     def test_blueprint_project(self):
         folder = os.path.join(BASEDIR, 'zeta_project')

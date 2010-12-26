@@ -1,0 +1,141 @@
+@import url(helpers.scss);
+
+// The number of columns in the grid.
+$blueprint_grid_columns: 24 !default;
+
+$blueprint_grid_cells: $blueprint_grid_columns - 1 !default;
+
+// The width of a column
+$blueprint_grid_width: 30px !default;
+
+// The amount of margin between columns
+$blueprint_grid_margin: 10px !default;
+
+// The width of a column including the margin. With default settings this is `40px`.
+$blueprint_grid_outer_width: $blueprint_grid_width + $blueprint_grid_margin;
+
+// The width of the container. With default settings this is `950px`.
+$blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns - $blueprint_grid_margin;
+
+
+@mixin blueprint-grid {
+
+    .container {
+        @include container; }
+
+    .column, #{enumerate(span-, 1, $blueprint_grid_columns)} {
+        @include column-base; }
+
+    .last, div.last {
+        @include last; }
+
+    @for $n from 1 to $blueprint_grid_columns {
+        .span-#{$n} { @include span($n); }
+        input, textarea, select {
+            &.span-#{$n} {
+                @include span($n, true); } } }
+
+    .span-#{$blueprint_grid_columns} {
+        margin: 0; }
+
+    @for $n from 1 to $blueprint_grid_cells {
+        .push-#{$n} {
+            @include push-margins($n); }
+        .pull-#{$n} {
+            @include pull-margins($n); }
+        .append-#{$n} {
+            @include append($n); }
+        .prepend-#{$n} {
+            @include prepend($n); } }
+
+    #{enumerate(.pull-, 1, $blueprint_grid_cells)} {
+        @include pull-base; }
+
+    #{enumerate(.push-, 1, $blueprint_grid_cells)} {
+        @include push-base; }
+
+    .prepend-top {
+        @include prepend-top; }
+
+    .append-bottom {
+        @include append-bottom; } }
+
+
+@mixin container {
+    width: $blueprint_container_size;
+    margin: 0 auto;
+    @include z-clearfix; }
+
+@mixin column-base($last: false) {
+    @include z-float-left;
+    @if $last {
+        @include last; }
+    @else {
+        margin-right: $blueprint_grid_margin; }
+    * html & {
+        overflow-x: hidden; } }
+
+@mixin last {
+    margin-right: 0; }
+
+@mixin span($n, $override: false) {
+    $width: $blueprint_grid_width * $n + ($blueprint_grid_margin * ($n - 1));
+    @if $override {
+        width: $width !important; }
+    @else {
+        width: $width; } }
+
+@mixin append($n) {
+    padding-right: $blueprint_grid_outer_width * $n; }
+
+@mixin prepend($n) {
+    padding-left: $blueprint_grid_outer_width * $n; }
+
+@mixin pull-base {
+    @include z-float-left;
+    position: relative; }
+
+@mixin pull-margins($n, $last: false) {
+  @if $last {
+    margin-left: 0-$blueprint_grid_outer_width * $n + $blueprint_grid_margin; }
+  @else {
+    margin-left: 0-$blueprint_grid_outer_width * $n; } }
+
+@mixin push-margins($n) {
+    margin: 0 (0-$blueprint_grid_outer_width * $n) 1.5em $blueprint_grid_outer_width * $n; }
+
+@mixin push-base {
+    @include z-float-right;
+    position: relative; }
+
+// Adds trailing margin.
+@mixin append-bottom($amount: 1.5em) {
+    margin-bottom: $amount; }
+
+// Adds leading margin.
+@mixin prepend-top($amount: 1.5em) {
+    margin-top: $amount; }
+
+// Mixin this to an hr to make a horizontal ruler across a column.
+@mixin colruler($border_color: #dddddd) {
+  background: $border_color;
+  color: $border_color;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none; }
+
+// Mixin this to an hr to make a horizontal spacer across a column.
+@mixin colspacer {
+  @include colruler;
+  background: white;
+  color: white;
+  visibility: hidden; }
+
+// Border on right hand side of a column.
+@mixin border($border_color: #eeeeee, $border_width: 1px) {
+  padding-right: $blueprint_grid_margin / 2 - $border_width;
+  margin-right: $blueprint_grid_margin / 2;
+  border-right: $border_width solid $border_color; }

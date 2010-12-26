@@ -3,7 +3,7 @@
 zeta-library
 ############
 
-*Zeta library* is framework for create and collect css, js files.
+*Zeta library* is framework for create and collect css, js files. Zeta have partiotial scss support. Docs in working.
 
 .. contents::
 

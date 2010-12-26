@@ -71,9 +71,9 @@ class Linker( object ):
             ])
 
         for filetype in filetypes:
-            parser = FORMATS[filetype].get('parser')
-            if parser:
-                out = parser(out)
+            p = FORMATS[filetype].get('parser')
+            if p:
+                out = p(out)
 
         pack_name = self.prefix + os.path.basename(self.path)
         pack_path = os.path.join(self.basedir, pack_name)
@@ -87,6 +87,7 @@ class Linker( object ):
     def parse_tree( self, path, parent=None ):
         """ Parse import structure.
         """
+        path = path.strip()
         filetype = os.path.splitext(path)[1][1:] or ''
         try:
             self.params = FORMATS[filetype]
@@ -103,14 +104,14 @@ class Linker( object ):
         def children(obj):
             child_path = obj.group(1)
             child_path = self.parse_path(child_path, curdir)
+            if child_path in self.imported:
+                # self.out("%s: %s already imported." % (path, child_path))
+                return ''
+            self.imported.add(child_path)
             try:
-                if child_path in self.imported:
-                    self.out("%s: %s already imported." % (path, child_path))
-                    return ''
-                self.imported.add(path)
                 self.parse_tree(child_path, path)
                 return ''
-            except OSError:
+            except (OSError, LinkerError):
                 self.out("%s: import file '%s' does not exist." % (path, child_path), error=True)
 
         def links(obj):
@@ -216,31 +217,31 @@ def route( path, prefix='_' ):
 def main():
     """ Parse arguments.
     """
-    parser = optparse.OptionParser(
+    p = optparse.OptionParser(
         usage="%prog [--prefix PREFIX] FILENAME or DIRNAME",
         description="Parse file or dir, import css, js code and save with prefix.")
 
-    parser.add_option(
+    p.add_option(
         '-p', '--prefix', default='_', dest='prefix',
         help="Save result with prefix. Default is '_'.")
 
-    parser.add_option(
+    p.add_option(
         '-n', '--no-comments', action='store_true', dest='no_comments',
         help="Clear comments.")
 
-    options, args = parser.parse_args()
+    options, args = p.parse_args()
     if len(args) != 1:
-        parser.error("Wrong number of arguments.")
+        p.error("Wrong number of arguments.")
 
     path = args[0]
     try:
         assert os.path.exists(path)
     except AssertionError:
-        parser.error("'%s' does not exist." % args[0])
+        p.error("'%s' does not exist." % args[0])
 
     for path in route(path, options.prefix):
         try:
             linker = Linker(path, options.prefix, options.no_comments)
             linker.link()
         except LinkerError, ex:
-            parser.error(ex)
+            p.error(ex)

@@ -1,0 +1,91 @@
+@mixin blueprint-ie {
+    body {
+        @include blueprint-ie-body; }
+
+    @include blueprint-ie-defaults; }
+
+@mixin blueprint-ie-body {
+
+    text-align: center;
+
+    @include blueprint-ie-hacks; }
+
+@mixin blueprint-ie-hacks {
+
+    * html & {
+        legend {
+            margin: 0px -8px 16px 0;
+            padding: 0; } }
+
+    html>& {
+        p code {
+            *white-space: normal; } } }
+
+// Fixes for Blueprint "inline" forms in IE
+@mixin blueprint-inline-form-ie {
+
+    div, p {
+        vertical-align: middle; }
+
+    label {
+        position: relative;
+        top: -0.25em; }
+
+    input {
+        &.checkbox, &.radio, &.button, button {
+        margin: 0.5em 0; } } }
+
+@mixin blueprint-ie-defaults {
+    .container {
+        text-align: left; }
+
+    sup {
+        vertical-align: text-top; }
+
+    sub {
+        vertical-align: text-bottom; }
+
+    hr {
+        margin: -8px auto 11px; }
+
+    img {
+        -ms-interpolation-mode: bicubic; }
+
+    fieldset {
+        padding-top: 0; }
+
+    textarea {
+        overflow: auto; }
+
+    input {
+        &.text {
+        margin: 0.5em 0;
+        background-color: white;
+        border: 1px solid #bbbbbb;
+        &:focus {
+            border: 1px solid #666666; } }
+        &.title {
+            margin: 0.5em 0;
+            background-color: white;
+            border: 1px solid #bbbbbb;
+        &:focus {
+            border: 1px solid #666666; } }
+        &.checkbox {
+            position: relative;
+            top: 0.25em; }
+        &.radio {
+            position: relative;
+            top: 0.25em; }
+        &.button {
+            position: relative;
+            top: 0.25em; } }
+
+    textarea {
+        margin: 0.5em 0; }
+
+    select {
+        margin: 0.5em 0; }
+
+    button {
+        position: relative;
+        top: 0.25em; } }
