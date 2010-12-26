@@ -1,0 +1,54 @@
+h1 {
+	font-size: 3em;
+	line-height: 1;
+	margin-bottom: 0.5em}
+
+h2 {
+	font-size: 2em;
+	margin-bottom: 0.75em}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1;
+	margin-bottom: 1em}
+
+h4 {
+	font-size: 1.2em;
+	line-height: 1.25;
+	margin-bottom: 1.25em}
+
+h5 {
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 1.5em}
+
+h6 {
+	font-size: 1em;
+	font-weight: bold}
+
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+	margin: 0}
+
+p {
+	margin: 0 0 1.5em}
+
+blockquote {
+	color: #666;
+	font-style: italic;
+	margin: 1.5em}
+
+strong, dfn {
+	font-weight: bold}
+
+em, dfn {
+	font-style: italic}
+
+sup, sub {
+	line-height: 0}
+
+abbr, acronym {
+	border-bottom: 1px dotted #666}
+
+address {
+	font-style: italic;
+	margin: 0 0 1.5em}

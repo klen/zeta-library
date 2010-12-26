@@ -1,0 +1,27 @@
+@import url(z-helpers);
+
+$z-grid-columns: 12 !default;
+$z-grid-width: 60px !default;
+$z-grid-cutter: 20px !default;
+
+@for $n from 1 to $z-grid-columns {
+    .z-grid-#{$n} {
+        width: $z-grid-width * $n + ($z-grid-cutter *( $n - 1 ));
+    }
+}
+
+.z-grid_table {
+    width: $z-grid-columns * ($z-grid-width + $z-grid-cutter);
+    margin: 0 auto;
+    overflow: hidden; }
+
+.z-grid_column {
+    margin: 0 $z-grid-cutter / 2;
+    overflow: hidden;
+    float: left;
+    display: inline; }
+
+.z-grid_row {
+    margin: 0 (0-$z-grid-cutter/2);
+    width: auto;
+    display: inline-block; }

@@ -1,9 +1,11 @@
 import optparse
 import os.path
+import re
 import sys
 import urllib2
-import re
-from scss import parser
+
+from scss.parser import Stylecheet
+
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
 ZETALIBDIR = os.path.join(BASEDIR, 'zetalib')
@@ -18,7 +20,7 @@ CSS_PARAMS = dict(
 )
 
 SCSS_PARAMS = dict(CSS_PARAMS)
-SCSS_PARAMS['parser'] = parser.parse
+SCSS_PARAMS['parser'] = Stylecheet
 
 JS_PARAMS = dict(
     import_parser = re.compile(r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\)\s*;?\s*$', re.MULTILINE),
@@ -41,10 +43,12 @@ class LinkerError( Exception ):
 class Linker( object ):
     """ Link js and css files in to one.
     """
-    def __init__(self, path, prefix='_', no_comments=False):
+    def __init__(self, path, **kwargs):
         self.path = path
-        self.no_comments = no_comments
-        self.prefix = prefix
+        self.no_comments = kwargs.get('no_comments')
+        self.prefix = kwargs.get('prefix', '_')
+        self.format = kwargs.get('format')
+
         self.imported = set()
         self.tree = list()
         self.basedir = os.path.relpath( os.path.dirname( path ))
@@ -56,10 +60,13 @@ class Linker( object ):
         self.out("Packing '%s'." % self.path)
         self.parse_tree(self.path)
         out = ''
-        filetypes = set()
         for item in self.tree:
-            filetypes.add(item['filetype'])
             src = item['src'].strip()
+            parse = FORMATS[item['format']].get('parser')
+            if parse:
+                if isinstance(parse, type):
+                    FORMATS[item['format']]['parser'] = parse = parse()
+                src = parse.parse(src)
             if not src:
                 continue
             out += "".join([
@@ -69,11 +76,6 @@ class Linker( object ):
                 src,
                 "\n\n\n",
             ])
-
-        for filetype in filetypes:
-            p = FORMATS[filetype].get('parser')
-            if p:
-                out = p(out)
 
         pack_name = self.prefix + os.path.basename(self.path)
         pack_path = os.path.join(self.basedir, pack_name)
@@ -90,7 +92,8 @@ class Linker( object ):
         path = path.strip()
         filetype = os.path.splitext(path)[1][1:] or ''
         try:
-            self.params = FORMATS[filetype]
+            f = self.format or filetype
+            self.params = FORMATS[f]
         except KeyError:
             raise LinkerError("Unknow format file: '%s'" % path)
 
@@ -137,7 +140,7 @@ class Linker( object ):
             comment_parser = self.params['comment_parser']
             src = comment_parser.sub('', src)
 
-        self.tree.append(dict(src=src, parent=parent, current=path, filetype=filetype))
+        self.tree.append(dict(src=src, parent=parent, current=path, format=f))
 
     def parse_path(self, path, curdir):
         """ Parse path.
@@ -226,12 +229,17 @@ def main():
         help="Save result with prefix. Default is '_'.")
 
     p.add_option(
+        '-f', '--format', dest='format',
+        help="Force use this format.")
+
+    p.add_option(
         '-n', '--no-comments', action='store_true', dest='no_comments',
         help="Clear comments.")
 
     options, args = p.parse_args()
     if len(args) != 1:
-        p.error("Wrong number of arguments.")
+        p.print_help(sys.stdout)
+        return
 
     path = args[0]
     try:
@@ -241,7 +249,7 @@ def main():
 
     for path in route(path, options.prefix):
         try:
-            linker = Linker(path, options.prefix, options.no_comments)
+            linker = Linker(path, prefix=options.prefix, no_comments=options.no_comments, format=options.format)
             linker.link()
         except LinkerError, ex:
             p.error(ex)

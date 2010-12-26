@@ -64,10 +64,10 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
 @mixin container {
     width: $blueprint_container_size;
     margin: 0 auto;
-    @include z-clearfix; }
+    @include clearfix; }
 
 @mixin column-base($last: false) {
-    @include z-float-left;
+    @include float-left;
     @if $last {
         @include last; }
     @else {
@@ -92,7 +92,7 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
     padding-left: $blueprint_grid_outer_width * $n; }
 
 @mixin pull-base {
-    @include z-float-left;
+    @include float-left;
     position: relative; }
 
 @mixin pull-margins($n, $last: false) {
@@ -105,7 +105,7 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
     margin: 0 (0-$blueprint_grid_outer_width * $n) 1.5em $blueprint_grid_outer_width * $n; }
 
 @mixin push-base {
-    @include z-float-right;
+    @include float-right;
     position: relative; }
 
 // Adds trailing margin.

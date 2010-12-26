@@ -2,20 +2,23 @@
 @import url(blueprint/typography.scss);
 @import url(blueprint/utilities.scss);
 @import url(blueprint/form.scss);
-@import url(blueprint/grid.scss);
 @import url(blueprint/interaction.scss);
-/* @import url(blueprint/print.scss); */
-/* @import url(blueprint/ie.scss); */
+@import url(blueprint/grid.scss);
 
+/* Blueprint Reset */
 @include blueprint-global-reset;
+
+/* Blueprint Typography */
 @include blueprint-typography;
+
+/* Blueprint utilities */
 @include blueprint-utilities;
-@include blueprint-grid;
+
+/* Blueprint form */
 @include blueprint-form;
+
+/* Blueprint interaction */
 @include blueprint-interaction;
 
-/* @media print { */
-    /* @include blueprint-print; */
-/* } */
-
-/* @include blueprint-ie; */
+/* Blueprint grid */
+@include blueprint-grid;

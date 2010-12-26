@@ -2,7 +2,6 @@
 @mixin z-has-layout {
     zoom: 1; }
 
-
 // For image replacement
 @mixin z-ir {
     display: block;
@@ -11,7 +10,6 @@
     background-repeat: no-repeat;
     text-align: left;
     direction: ltr; }
-
 
 // For float
 @mixin z-float($side: left) {
@@ -24,18 +22,15 @@
 @mixin z-float-right {
     @include z-float(right); }
 
-
 // For clearfix
 @mixin z-clearfix {
     overflow: hidden;
     @include z-has-layout; }
 
-
 // For hidden from both screenreaders and browsers
 @mixin z-hidden {
     display: none;
     visibility: hidden; }
-
 
 // Hide visually and from screenreaders, but maintain layout
 @mixin z-invisible {

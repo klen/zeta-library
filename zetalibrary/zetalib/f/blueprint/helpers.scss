@@ -4,10 +4,10 @@
   float: $side; }
 
 @mixin float-left {
-    @include z-float(left); }
+    @include float(left); }
 
 @mixin float-right {
-    @include z-float(right); }
+    @include float(right); }
 
 // For clearfix
 @mixin clearfix {

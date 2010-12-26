@@ -1,30 +1,7 @@
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/reset.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/colors.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint/typography.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/helpers.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint/typography.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/typography.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/utilities.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/form.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/grid.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint/interaction.scss' */ 
-/* From: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* ============================== */ 
-/* Zeta import: 'zetalibrary/zetalib/f/blueprint.scss' */ 
-/* From: '/home/klen/Projects/github.com/zeta-library/tests/zeta_project/main.css' */ 
+/* ============================== */
+/* Zeta import: 'zetalibrary/zetalib/f/blueprint.scss' */
+/* From: '/home/klen/Projects/github.com/zeta-library/tests/blueprint/main.css' */
+/* Blueprint Reset */ 
 
 html, body {
 	border: 0;
@@ -91,15 +68,16 @@ table {
 
 a img {
 	border: none}
+/* Blueprint Typography */ 
 
 body {
-	color: 0;
+	color: #444;
 	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-	font-size: 0%;
+	font-size: 75%;
 	line-height: 1.5}
 
 h1, h2, h3, h4, h5, h6 {
-	color: 0;
+	color: #333;
 	font-weight: normal}
 
 h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
@@ -137,10 +115,14 @@ p {
 	margin: 0 0 1.5em}
 
 p img.left {
+	display: inline;
+	float: left;
 	margin: 1.5em 1.5em 1.5em 0;
 	padding: 0}
 
 p img.right {
+	display: inline;
+	float: right;
 	margin: 1.5em 0 1.5em 1.5em;
 	padding: 0}
 
@@ -226,13 +208,13 @@ th {
 	font-weight: bold}
 
 thead th {
-	background: 0}
+	background: #c3d9ff}
 
 th, td, caption {
 	padding: 4px 10px 4px 5px}
 
 tr.even td {
-	background: 0}
+	background: #e5ecf9}
 
 tfoot {
 	font-style: italic}
@@ -245,6 +227,7 @@ caption {
 
 .loud {
 	color: 0}
+/* Blueprint utilities */ 
 
 .clear {
 	clear: both}
@@ -281,12 +264,112 @@ caption {
 .bottom {
 	margin-bottom: 0;
 	padding-bottom: 0}
+/* Blueprint form */ 
+
+label {
+	font-weight: bold}
+
+fieldset {
+	margin: 0 0 1.5em 0;
+	padding: 1.4em}
+
+legend {
+	font-size: 1.2em;
+	font-weight: bold}
+
+input.text, input.title, input[type=email], input[type=text], input[type=password] {
+	background-color: white;
+	margin: 0.5em 0;
+	padding: 5px}
+
+input.title {
+	font-size: 1.5em}
+
+input[type=checkbox], input.checkbox, input[type=radio], input.radio {
+	position: relative;
+	top: 0.25em}
+
+textarea {
+	margin: 0.5em 0;
+	padding: 5px}
+
+select {
+	margin: 0.5em 0}
+
+fieldset {
+	border: 1px solid #ccc}
+
+input.text, input.title, input[type=email], input[type=text], input[type=password], textarea, select {
+	border: 1px solid #bbb}
+
+input.text:focus, input.title:focus, input[type=email]:focus, input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
+	border: 1px solid #666}
+
+input.text, input.title, input[type=email], input[type=text], input[type=password] {
+	width: 300px}
+
+textarea {
+	height: 250px;
+	width: 390px}
+/* Blueprint interaction */ 
+
+.error {
+	background: #fbe3e4;
+	border: 2px solid #ddd;
+	border-color: #fbc2c4;
+	color: #8a1f11;
+	margin-bottom: 1em;
+	padding: 0.8em}
+
+.error a {
+	color: #8a1f11}
+
+.notice {
+	background: #fff6bf;
+	border: 2px solid #ddd;
+	border-color: #ffd324;
+	color: #514721;
+	margin-bottom: 1em;
+	padding: 0.8em}
+
+.notice a {
+	color: #514721}
+
+.success {
+	background: #e6efc2;
+	border: 2px solid #ddd;
+	border-color: #c6d880;
+	color: #264409;
+	margin-bottom: 1em;
+	padding: 0.8em}
+
+.success a {
+	color: #264409}
+
+.hide {
+	display: none}
+
+.highlight {
+	background: yellow}
+
+.added {
+	background: #060;
+	color: white}
+
+.removed {
+	background: #900;
+	color: white}
+/* Blueprint grid */ 
 
 .container {
 	margin: 0 auto;
-	width: 950px}
+	overflow: hidden;
+	width: 950px;
+	zoom: 1}
 
 .column, span-1, span-2, span-3, span-4, span-5, span-6, span-7, span-8, span-9, span-10, span-11, span-12, span-13, span-14, span-15, span-16, span-17, span-18, span-19, span-20, span-21, span-22, span-23, span-24 {
+	display: inline;
+	float: left;
 	margin-right: 10px}
 
 * html .column, * html span-1, * html span-2, * html span-3, * html span-4, * html span-5, * html span-6, * html span-7, * html span-8, * html span-9, * html span-10, * html span-11, * html span-12, * html span-13, * html span-14, * html span-15, * html span-16, * html span-17, * html span-18, * html span-19, * html span-20, * html span-21, * html span-22, * html span-23, * html span-24 {
@@ -719,9 +802,13 @@ input.span-24, textarea.span-24, select.span-24 {
 	padding-left: 920px}
 
 .pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12, .pull-13, .pull-14, .pull-15, .pull-16, .pull-17, .pull-18, .pull-19, .pull-20, .pull-21, .pull-22, .pull-23 {
+	display: inline;
+	float: left;
 	position: relative}
 
 .push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23 {
+	display: inline;
+	float: right;
 	position: relative}
 
 .prepend-top {
@@ -730,95 +817,4 @@ input.span-24, textarea.span-24, select.span-24 {
 .append-bottom {
 	margin-bottom: 1.5em}
 
-label {
-	font-weight: bold}
 
-fieldset {
-	margin: 0 0 1.5em 0;
-	padding: 1.4em}
-
-legend {
-	font-size: 1.2em;
-	font-weight: bold}
-
-input.text, input.title, input[type=email], input[type=text], input[type=password] {
-	background-color: white;
-	margin: 0.5em 0;
-	padding: 5px}
-
-input.title {
-	font-size: 1.5em}
-
-input[type=checkbox], input.checkbox, input[type=radio], input.radio {
-	position: relative;
-	top: 0.25em}
-
-textarea {
-	margin: 0.5em 0;
-	padding: 5px}
-
-select {
-	margin: 0.5em 0}
-
-fieldset {
-	border: 1px solid #ccc}
-
-input.text, input.title, input[type=email], input[type=text], input[type=password], textarea, select {
-	border: 1px solid #bbb}
-
-input.text:focus, input.title:focus, input[type=email]:focus, input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
-	border: 1px solid #666}
-
-input.text, input.title, input[type=email], input[type=text], input[type=password] {
-	width: 300px}
-
-textarea {
-	height: 250px;
-	width: 390px}
-
-.error {
-	background: #fbe3e4;
-	border: 2px solid #ddd;
-	border-color: #fbc2c4;
-	color: #8a1f11;
-	margin-bottom: 1em;
-	padding: 0.8em}
-
-.error a {
-	color: #8a1f11}
-
-.notice {
-	background: #fff6bf;
-	border: 2px solid #ddd;
-	border-color: #ffd324;
-	color: #514721;
-	margin-bottom: 1em;
-	padding: 0.8em}
-
-.notice a {
-	color: #514721}
-
-.success {
-	background: #e6efc2;
-	border: 2px solid #ddd;
-	border-color: #c6d880;
-	color: #264409;
-	margin-bottom: 1em;
-	padding: 0.8em}
-
-.success a {
-	color: #264409}
-
-.hide {
-	display: none}
-
-.highlight {
-	background: yellow}
-
-.added {
-	background: #060;
-	color: white}
-
-.removed {
-	background: #900;
-	color: white}

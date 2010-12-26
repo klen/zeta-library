@@ -10,15 +10,15 @@ $blueprint-font-size: 12px !default;
 @mixin blueprint-typography {
     body {
         line-height: 1.5;
-        font-size: 100% * $font-size / 16px;
+        font-size: 100% * $blueprint-font-size / 16px;
         @include normal-text;
     }
     @include blueprint-typography-defaults;
 }
 
-@mixin normal-text      { font-family: $blueprint-font-family; color: $font-color; }
+@mixin normal-text      { font-family: $blueprint-font-family; color: $font_color; }
 @mixin fixed-width-text { font: 1em $blueprint-fixed-font-family; line-height: 1.5; }
-@mixin header-text      { font-weight: normal; color: $header-color; }
+@mixin header-text      { font-weight: normal; color: $header_color; }
 @mixin quiet            { color: $quiet-color; }
 @mixin loud             { color: $loud-color; }
 
@@ -136,13 +136,13 @@ $blueprint-font-size: 12px !default;
   th {
         font-weight: bold; }
   thead th {
-        background: $blueprint-table-header-color; }
+        background: $blueprint_table_header_color; }
 
   th, td, caption {
         padding: 4px 10px 4px 5px; }
 
   tr.even td {
-        background: $blueprint-table-stripe-color; }
+        background: $blueprint_table_stripe_color; }
 
   tfoot {
         font-style: italic; }

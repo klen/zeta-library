@@ -25,26 +25,34 @@ class TestLinker( unittest.TestCase ):
         result = route(CSSFILE)
         self.assertTrue(CSSFILE in result)
 
-    # def testcss(self):
-        # linker = Linker(CSSFILE, no_comments=True)
-        # linker.link()
-        # test = open(TESTCSSFILE).read()
-        # test_link = open(DONECSSFILE).read()
-        # self.assertEqual(test, test_link)
+    def test_zeta_project(self):
+        """ Test zeta project.
+        """
+        folder = os.path.join(BASEDIR, 'zeta')
+        f = os.path.join(folder, 'main.css')
+        linker = Linker(f, no_comments=False)
+        linker.link()
+        orig = open( os.path.join(folder, '_main.orig') ).read()
+        test = open( os.path.join(folder, '_main.css') ).read()
+        self.assertEqual(test, orig)
 
-    # def testjs(self):
-        # linker = Linker(JSFILE, no_comments=True)
-        # linker.link()
-        # test = open(TESTJSFILE).read()
-        # test_link = open(DONEJSFILE).read()
-        # self.assertEqual(test, test_link)
+        f = os.path.join(folder, 'main.js')
+        linker = Linker(f, no_comments=False)
+        linker.link()
+        orig = open( os.path.join(folder, '_main.js') ).read()
+        test = open( os.path.join(folder, '_main.js.orig') ).read()
+        self.assertEqual(test, orig)
 
     def test_blueprint_project(self):
-        folder = os.path.join(BASEDIR, 'zeta_project')
+        """ Test zeta blueprint project.
+        """
+        folder = os.path.join(BASEDIR, 'blueprint')
         f = os.path.join(folder, 'main.css')
-        linker = Linker(f, no_comments=True)
+        linker = Linker(f, no_comments=False)
         linker.link()
-
+        orig = open( os.path.join(folder, '_main.orig') ).read()
+        test = open( os.path.join(folder, '_main.css') ).read()
+        self.assertEqual(test, orig)
 
 
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
-## 2010-12-26 0.2.0
+## 2010-12-26 0.2.2
 
 * Ass SCSS support
 * Add SCSS blueprint framework
 * Fix duble import
+* Add force format option
 
 
 ## 2010-12-23 0.1.1
