@@ -1,9 +1,10 @@
-## 2010-12-26 0.2.2
+## 2010-12-26 0.2.3
 
 * Ass SCSS support
 * Add SCSS blueprint framework
 * Fix duble import
 * Add force format option
+* Fix z-grid
 
 
 ## 2010-12-23 0.1.1
