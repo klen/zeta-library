@@ -4,13 +4,6 @@ import sys
 
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
-RESDIR = os.path.join(BASEDIR, 'res')
-CSSFILE = os.path.join(RESDIR, 'test.css')
-DONECSSFILE = os.path.join(RESDIR, '_test.css')
-JSFILE = os.path.join(RESDIR, 'test.js')
-DONEJSFILE = os.path.join(RESDIR, '_test.js')
-TESTCSSFILE = os.path.join(RESDIR, 'test_css')
-TESTJSFILE = os.path.join(RESDIR, 'test_js')
 
 sys.path.insert(0, os.path.dirname(BASEDIR))
 from zetalibrary.main import route, Linker
@@ -19,11 +12,12 @@ from zetalibrary.main import route, Linker
 class TestLinker( unittest.TestCase ):
 
     def testroute(self):
-        result = list(route(RESDIR))
-        self.assertTrue(CSSFILE in result)
-        self.assertTrue(JSFILE in result)
-        result = route(CSSFILE)
-        self.assertTrue(CSSFILE in result)
+        folder = os.path.join(BASEDIR, 'zeta')
+        css_file = os.path.join(folder, 'main.css')
+        js_file = os.path.join(folder, 'main.js')
+        result = list(route(folder))
+        self.assertTrue(css_file in result)
+        self.assertTrue(js_file in result)
 
     def test_zeta_project(self):
         """ Test zeta project.

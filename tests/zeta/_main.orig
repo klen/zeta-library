@@ -289,13 +289,15 @@ address {
 .z-grid_table {
 	margin: 0 auto;
 	overflow: hidden;
-	width: 960px}
+	width: 960px;
+	zoom: 1}
 
 .z-grid_column {
 	display: inline;
 	float: left;
 	margin: 0 10px;
-	overflow: hidden}
+	overflow: hidden;
+	zoom: 1}
 
 .z-grid_row {
 	display: inline-block;
