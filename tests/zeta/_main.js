@@ -1,6 +1,6 @@
 // ==============================
 // Zeta import: 'zetalibrary/zetalib/f/jquery.js'
-// From: 'zetalibrary/zetalib/zeta.js'
+// From: 'None'
 /*!
  * jQuery JavaScript Library v1.4.4
  * http://jquery.com/
@@ -172,7 +172,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
 // ==============================
 // Zeta import: 'zetalibrary/zetalib/zeta.js'
-// From: '/home/klen/Projects/github.com/zeta-library/tests/zeta/main.js'
+// From: 'zetalibrary/zetalib/f/jquery.js'
 // Zeta base support
 // --------------------
 
@@ -230,7 +230,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
 // ==============================
 // Zeta import: '/home/klen/Projects/github.com/zeta-library/tests/zeta/main.js'
-// From: 'None'
+// From: 'zetalibrary/zetalib/zeta.js'
 // Base Zeta scripts
 
 alert(1);
