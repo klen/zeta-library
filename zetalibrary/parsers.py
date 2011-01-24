@@ -104,4 +104,4 @@ class JSParser(Parser):
     comment_template = '// %s\n'
 
 
-PARSERS = dict(css = CSSParser(), scss = SCSSParser(), js = JSParser(),)
+PARSERS = dict(css = CSSParser, scss = SCSSParser, js = JSParser,)

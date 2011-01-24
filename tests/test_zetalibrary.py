@@ -30,23 +30,23 @@ class TestLinker( unittest.TestCase ):
         test = open( os.path.join(folder, '_main.css') ).read()
         self.assertEqual(test, orig)
 
-        # f = os.path.join(folder, 'main.js')
-        # linker = Linker(f, no_comments=False)
-        # linker.link()
-        # orig = open( os.path.join(folder, '_main.js') ).read()
-        # test = open( os.path.join(folder, '_main.js.orig') ).read()
-        # self.assertEqual(test, orig)
+        f = os.path.join(folder, 'main.js')
+        linker = Linker(f, no_comments=False)
+        linker.link()
+        orig = open( os.path.join(folder, '_main.js') ).read()
+        test = open( os.path.join(folder, '_main.js.orig') ).read()
+        self.assertEqual(test, orig)
 
-    # def test_blueprint_project(self):
-        # """ Test zeta blueprint project.
-        # """
-        # folder = os.path.join(BASEDIR, 'blueprint')
-        # f = os.path.join(folder, 'main.css')
-        # linker = Linker(f, no_comments=False)
-        # linker.link()
-        # orig = open( os.path.join(folder, '_main.orig') ).read()
-        # test = open( os.path.join(folder, '_main.css') ).read()
-        # self.assertEqual(test, orig)
+    def test_blueprint_project(self):
+        """ Test zeta blueprint project.
+        """
+        folder = os.path.join(BASEDIR, 'blueprint')
+        f = os.path.join(folder, 'main.css')
+        linker = Linker(f, no_comments=False)
+        linker.link()
+        orig = open( os.path.join(folder, '_main.orig') ).read()
+        test = open( os.path.join(folder, '_main.css') ).read()
+        self.assertEqual(test, orig)
 
 
 if __name__ == "__main__":

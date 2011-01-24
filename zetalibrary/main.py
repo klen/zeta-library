@@ -19,6 +19,8 @@ class Linker( object ):
         self.tree = list()
         self.basedir = os.path.abspath( os.path.dirname( path ))
         self.parser = None
+        self.parsers = dict((k, p()) for k, p  in PARSERS.items())
+
 
     def link( self ):
         """ Parse and save file.
@@ -56,7 +58,7 @@ class Linker( object ):
         filetype = os.path.splitext(path)[1][1:] or ''
         try:
             f = self.format or filetype
-            self.parser = PARSERS[f.lower()]
+            self.parser = self.parsers[f.lower()]
         except KeyError:
             raise ZetaError("Unknow format file: '%s'" % path)
 
