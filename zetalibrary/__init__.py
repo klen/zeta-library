@@ -2,7 +2,7 @@
 import os.path
 
 __project__ = PROJECT = __name__
-__version__ = VERSION = "0.2.75"
+__version__ = VERSION = "0.2.76"
 __author__ = AUTHOR = "Kirill Klenov <horneds@gmail.com>"
 __license__ = LICENSE = "GNU LGPL"
 

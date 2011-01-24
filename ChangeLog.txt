@@ -1,7 +1,8 @@
-## 2011-01-24 0.2.75
+## 2011-01-24 0.2.76
 
 * Small fixes
 * Add compass reset
+* Windows fix (denya.msk@gmail.com)
 
 
 ## 2010-12-27 0.2.6
