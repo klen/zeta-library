@@ -4,3 +4,4 @@ sitegen.egg-info
 .ropeproject
 *.pyc
 .sass-cache
+/compass
