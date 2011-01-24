@@ -42,7 +42,7 @@ class Parser(object):
             linker.out("%s: import file '%s' does not exist." % (linker.basedir, path), error=True)
             return ''
 
-        curdir = os.path.relpath(os.path.dirname(path))
+        curdir = os.path.abspath(os.path.dirname(path))
         src, tree = self.parse_import(src)
         for child_path in tree:
             child_path = self.parse_path(child_path, curdir)
