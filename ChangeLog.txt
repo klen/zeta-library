@@ -1,3 +1,8 @@
+## 2011-01-24 0.2.7
+
+* Small fixes
+
+
 ## 2010-12-27 0.2.6
 
 * Prepare scss caching
