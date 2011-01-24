@@ -17,7 +17,7 @@ class Linker( object ):
 
         self.imported = set()
         self.tree = list()
-        self.basedir = os.path.relpath( os.path.dirname( path ))
+        self.basedir = os.path.abspath( os.path.dirname( path ))
         self.parser = None
 
     def link( self ):

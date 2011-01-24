@@ -1,4 +1,4 @@
-## 2011-01-24 0.2.72
+## 2011-01-24 0.2.73
 
 * Small fixes
 * Add compass reset
