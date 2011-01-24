@@ -82,7 +82,9 @@ class CSSParser(Parser):
                 if link_path.startswith(ignore):
                     return "url(%s)" % link_path
             try:
-                return "url(%s)" % os.path.relpath(os.path.join(curdir, link_path), linker.basedir)
+                url = "url(%s)" % os.path.relpath(os.path.join(curdir, link_path), linker.basedir)
+                url = url.replace("\\", "/")
+                return url
             except OSError:
                 return "url(%s)" % link_path
 
