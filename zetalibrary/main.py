@@ -67,8 +67,12 @@ class Linker( object ):
     def out( message, error=False ):
         """ Out messages.
         """
-        pipe = sys.stdout if not error else sys.stderr
-        pipe.write("\n  * %s\n" % message)
+        pipe = sys.stdout
+        alert = ''
+        if error:
+            pipe = sys.stderr
+            alert = 'Error: '
+        pipe.write("\n  *  %s%s\n" % (alert,  message ))
 
 
 def route( path, prefix='_' ):

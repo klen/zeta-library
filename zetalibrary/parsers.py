@@ -40,6 +40,7 @@ class Parser(object):
             src = self.open_path(path, linker.basedir).read()
         except IOError:
             linker.out("%s: import file '%s' does not exist." % (linker.basedir, path), error=True)
+            return ''
 
         curdir = os.path.relpath(os.path.dirname(path))
         src, tree = self.parse_import(src)
