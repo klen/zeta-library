@@ -18,9 +18,9 @@ class Parser(object):
 
         elif path.startswith('zeta://'):
             path = path[7:]
-            return os.path.relpath(os.path.normpath(os.path.join(ZETALIBDIR, path)))
+            return os.path.abspath(os.path.normpath(os.path.join(ZETALIBDIR, path)))
 
-        return os.path.relpath(os.path.normpath(os.path.join(curdir, path)))
+        return os.path.abspath(os.path.normpath(os.path.join(curdir, path)))
 
     def open_path(self, path, basedir):
         """ Read source.

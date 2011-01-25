@@ -1,3 +1,10 @@
+## 2011-01-25 0.2.8
+
+* Fix tests
+* Fix boilerplate framework
+* Add show frameworks and show zeta blocks command
+
+
 ## 2011-01-24 0.2.76
 
 * Small fixes

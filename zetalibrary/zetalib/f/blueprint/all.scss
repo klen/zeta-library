@@ -1,9 +1,9 @@
-@import url(blueprint/reset.scss);
-@import url(blueprint/typography.scss);
-@import url(blueprint/utilities.scss);
-@import url(blueprint/form.scss);
-@import url(blueprint/interaction.scss);
-@import url(blueprint/grid.scss);
+@import url(reset.scss);
+@import url(typography.scss);
+@import url(utilities.scss);
+@import url(form.scss);
+@import url(interaction.scss);
+@import url(grid.scss);
 
 /* Blueprint Reset */
 @include blueprint-global-reset;
@@ -22,3 +22,4 @@
 
 /* Blueprint grid */
 @include blueprint-grid;
+

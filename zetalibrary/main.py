@@ -2,8 +2,16 @@ import optparse
 import os.path
 import sys
 
-from zetalibrary import ZetaError
+from zetalibrary import ZetaError, ZETALIBDIR
 from zetalibrary.parsers import PARSERS
+
+
+COLORS = dict(
+    okgreen = '\033[92m',
+    warning = '\033[93m',
+    fail = '\033[91m',
+    endc = '\033[0m',
+)
 
 
 class Linker( object ):
@@ -30,17 +38,18 @@ class Linker( object ):
         out = ''
         parent = None
         for item in self.tree:
+            current = item.get('current', '').replace(ZETALIBDIR, 'zeta:/')
             src = item['src'].strip()
             if not src:
                 continue
             out += "".join([
                 self.parser.comment_template % ("=" * 30),
-                self.parser.comment_template % "Zeta import: '%s'" % item['current'],
+                self.parser.comment_template % "Zeta import: '%s'" % current,
                 self.parser.comment_template % "From: '%s'" % parent,
                 src,
                 "\n\n\n",
             ])
-            parent = item['current']
+            parent = current
 
         pack_name = self.prefix + os.path.basename(self.path)
         pack_path = os.path.join(self.basedir, pack_name)
@@ -73,8 +82,30 @@ class Linker( object ):
         alert = ''
         if error:
             pipe = sys.stderr
-            alert = 'Error: '
-        pipe.write("\n  *  %s%s\n" % (alert,  message ))
+            alert = '%sError: ' % COLORS['warning']
+        pipe.write("\n  *  %s%s\n%s" % (alert,  message, COLORS['endc']))
+
+
+def get_frameworks():
+    path = os.path.join(ZETALIBDIR, 'f')
+    for fname in os.listdir(path):
+        fpath = os.path.join(path, fname)
+        if os.path.isdir(fpath):
+            try:
+                version = open(os.path.join(fpath, 'version')).read()
+                description = open(os.path.join(fpath, 'description')).read()
+            except IOError:
+                version = description = ''
+            yield (fname, version, description)
+
+
+def get_blocks():
+    path = os.path.join(ZETALIBDIR, 'z')
+    for bname in os.listdir(path):
+        bpath = os.path.join(path, bname)
+        if os.path.isdir(bpath):
+            yield ( bname, '')
+
 
 
 def route( path, prefix='_' ):
@@ -116,7 +147,26 @@ def main():
         '-n', '--no-comments', action='store_true', dest='no_comments',
         help="Clear comments.")
 
+    p.add_option(
+        '-w', '--show-frameworks', action='store_true', dest='frameworks',
+        help="Show available frameworks.")
+
+    p.add_option(
+        '-z', '--show-blocks', action='store_true', dest='zeta',
+        help="Show available zeta blocks.")
+
     options, args = p.parse_args()
+
+    if options.frameworks:
+        for framework in get_frameworks():
+            sys.stdout.write('%s%s%s %s%s\n' % ( COLORS['okgreen'], framework[0], COLORS['endc'], framework[1], framework[2]))
+        sys.exit()
+
+    if options.zeta:
+        for block in get_blocks():
+            sys.stdout.write('%s%s%s%s\n' % ( COLORS['okgreen'], block[0], COLORS['endc'], block[1],))
+        sys.exit()
+
     if len(args) != 1:
         p.print_help(sys.stdout)
         return
@@ -125,11 +175,11 @@ def main():
     try:
         assert os.path.exists(path)
     except AssertionError:
-        p.error("'%s' does not exist." % args[0])
+        p.error("%s'%s' does not exist.%s" % (args[0], COLORS['fail'], COLORS['endc']))
 
     for path in route(path, options.prefix):
         try:
             linker = Linker(path, prefix=options.prefix, no_comments=options.no_comments, format=options.format)
             linker.link()
         except ZetaError, ex:
-            p.error(ex)
+            p.error("%s%s%s" % (ex, COLORS['fail'], COLORS['warning']))

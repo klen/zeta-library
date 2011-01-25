@@ -1,5 +1,5 @@
 /* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/z/z-reset/z-reset.css' */
+/* Zeta import: 'zeta://z/z-reset/z-reset.css' */
 /* From: 'None' */
 /* html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
   v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark */ 
@@ -69,8 +69,8 @@ input, select {
 
 
 /* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/z/z-base/z-base.scss' */
-/* From: 'zetalibrary/zetalib/z/z-reset/z-reset.css' */
+/* Zeta import: 'zeta://z/z-base/z-base.scss' */
+/* From: 'zeta://z/z-reset/z-reset.css' */
 /* fonts.css from the YUI Library: developer.yahoo.com/yui/
    refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */ 
 
@@ -189,8 +189,8 @@ button {
 
 
 /* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/z/z-typography/z-typography.css' */
-/* From: 'zetalibrary/zetalib/z/z-base/z-base.scss' */
+/* Zeta import: 'zeta://z/z-typography/z-typography.css' */
+/* From: 'zeta://z/z-base/z-base.scss' */
 h1 {
 	font-size: 3em;
 	line-height: 1;
@@ -248,8 +248,8 @@ address {
 
 
 /* ============================== */
-/* Zeta import: 'zetalibrary/zetalib/z/z-grid/z-grid.scss' */
-/* From: 'zetalibrary/zetalib/z/z-typography/z-typography.css' */
+/* Zeta import: 'zeta://z/z-grid/z-grid.scss' */
+/* From: 'zeta://z/z-typography/z-typography.css' */
 .z-grid-1 {
 	width: 60px}
 
