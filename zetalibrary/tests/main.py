@@ -18,5 +18,5 @@ class TestLinker( unittest.TestCase ):
         self.assertTrue(js_file in result)
 
     def test_getframework(self):
-        frameworks = get_frameworks()
+        frameworks = list(get_frameworks())
         self.assertTrue(len(frameworks))

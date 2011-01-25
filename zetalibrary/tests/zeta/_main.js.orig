@@ -1,5 +1,5 @@
 // ==============================
-// Zeta import: 'zeta://f/jquery/jquery.js'
+// Zeta import: 'zeta://f/jquery/jquery-1.4.4.min.js'
 // From: 'None'
 /*!
  * jQuery JavaScript Library v1.4.4
@@ -172,7 +172,7 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
 // ==============================
 // Zeta import: 'zeta://zeta.js'
-// From: 'zeta://f/jquery/jquery.js'
+// From: 'zeta://f/jquery/jquery-1.4.4.min.js'
 // Zeta base support
 // --------------------
 

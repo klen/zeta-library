@@ -301,7 +301,7 @@ address {
 
 .z-grid_row {
 	display: inline-block;
-	margin: -10px;
+	margin: 0 -10px;
 	width: auto}
 
 

@@ -21,6 +21,6 @@ $z-grid-cutter: 20px !default;
     @include z-clearfix; }
 
 .z-grid_row {
-    margin: 0 -$z-grid-cutter/2;
+    margin: 0 0-$z-grid-cutter/2;
     width: auto;
     display: inline-block; }
