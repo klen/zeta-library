@@ -1,6 +1,7 @@
-## 2011-01-28 0.2.82
+## 2011-01-28 0.2.9
 
 * Now z-options and z-helpers imported from z-base
+* Add z-round and etc in z-helpers
 
 
 ## 2011-01-25 0.2.81
