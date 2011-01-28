@@ -1,3 +1,8 @@
+## 2011-01-28 0.2.82
+
+* Now z-options and z-helpers imported from z-base
+
+
 ## 2011-01-25 0.2.81
 
 * Fix tests
