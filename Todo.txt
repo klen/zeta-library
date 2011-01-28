@@ -1,4 +1,3 @@
 Fix recursion error in folder parse
-Add framework list (see compass)
 Create custom zeta format file with css and js blocks
 Move base zeta js to prototype.

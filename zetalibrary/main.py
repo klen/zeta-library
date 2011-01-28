@@ -90,12 +90,8 @@ def get_frameworks():
     path = os.path.join(ZETALIBDIR, 'f')
     for fname in os.listdir(path):
         fpath = os.path.join(path, fname)
-        if os.path.isdir(fpath):
-            try:
-                version = open(os.path.join(fpath, 'version')).read()
-                description = open(os.path.join(fpath, 'description')).read()
-            except IOError:
-                version = description = ''
+        if os.path.isfile(fpath):
+            description, version = open(fpath).readlines()[1:3]
             yield (fname, version, description)
 
 

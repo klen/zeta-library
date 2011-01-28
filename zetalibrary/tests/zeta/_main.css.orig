@@ -288,3 +288,38 @@ address {
 	width: auto}
 
 
+/* ============================== */
+/* Zeta import: '/home/klen/Projects/github.com/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
+/* From: 'zeta://z/z-grid/z-grid.scss' */
+.test {
+	-moz-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
+	-o-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
+	-webkit-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
+	background-repeat: no-repeat;
+	direction: ltr;
+	display: block;
+	display: inline;
+	float: left;
+	overflow: hidden;
+	overflow: hidden;
+	text-align: left;
+	text-indent: -999em;
+	text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
+	zoom: 1}
+
+.test_center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto}
+
+.test_center_round {
+	-moz-border-radius: 3px 3px;
+	-moz-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
+	-o-border-radius: 3px 3px;
+	-o-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
+	-webkit-border-radius: 3px 3px;
+	-webkit-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
+	border-radius: 3px 3px;
+	box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45)}
+
+

@@ -1,0 +1,15 @@
+.test {
+    @include z-clearfix;
+    @include z-ir;
+    @include z-float;
+    @include z-text-shadow;
+
+    &_center {
+        @include z-center;
+
+        &_round {
+            @include z-round;
+            @include z-shadow;
+        }
+    }
+}

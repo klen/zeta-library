@@ -35,3 +35,79 @@
 // Hide visually and from screenreaders, but maintain layout
 @mixin z-invisible {
     visibility: hidden; }
+
+// Center element
+@mixin z-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }                           
+
+// Rounded helpers
+$hround: 3px !default;
+$vround: 3px !default;
+@mixin z-round($h: $hround, $v: $vround) {
+    border-radius: $h $v;
+    -moz-border-radius: $h $v;
+    -o-border-radius: $h $v;
+    -webkit-border-radius: $h $v; }
+
+@mixin z-round-top($h: $hround, $v: $vround) {
+    @include z-round-top-left($h, $v);
+    @include z-round-top-right($h, $v); }
+
+@mixin z-round-bottom($h: $hround, $v: $vround) {
+    @include z-round-bottom-left($h, $v);
+    @include z-round-bottom-right($h, $v); }
+
+@mixin z-round-left($h: $hround, $v: $vround) {
+    @include z-round-top-left($h, $v);
+    @include z-round-bottom-left($h, $v); }
+
+@mixin z-round-right($h: $hround, $v: $vround) {
+    @include z-round-top-right($h, $v);
+    @include z-round-bottom-right($h, $v); }
+
+@mixin z-round-top-left($h: $hround, $v: $vround) {
+    -moz-border-top-left-radius: $h $v;
+    -webkit-border-top-left-radius: $h $v;
+    -o-border-top-left-radius: $h $v;
+    border-top-left-radius: $h $v; }
+
+@mixin z-round-top-right($h: $hround, $v: $vround) {
+    -moz-border-top-right-radius: $h $v;
+    -webkit-border-top-right-radius: $h $v;
+    -o-border-top-right-radius: $h $v;
+    border-top-right-radius: $h $v; }
+
+@mixin z-round-bottom-left($h: $hround, $v: $vround) {
+    -moz-border-bottom-left-radius: $h $v;
+    -webkit-border-bottom-left-radius: $h $v;
+    -o-border-bottom-left-radius: $h $v;
+    border-bottom-left-radius: $h $v; }
+
+@mixin z-round-bottom-right($h: $hround, $v: $vround) {
+    -moz-border-bottom-right-radius: $h $v;
+    -webkit-border-bottom-right-radius: $h $v;
+    -o-border-bottom-right-radius: $h $v;
+    border-bottom-right-radius: $h $v; }
+
+// Shadow
+$horizontal_offset: 3px !default;
+$vertical_offset: 4px !default;
+$blur_radius: 3px !default;
+$spread_radius: 1px !default;
+$shadow_color: rgba( 10, 10, 10, .45) !default;
+@mixin z-shadow($h: $horizontal_offset, $v: $vertical_offset, $c: $shadow_color, $b: $blur_radius, $s: $spread_radius) {
+    -moz-box-shadow: $h $v $b $s $c;
+    -webkit-box-shadow: $h $v $b $s $c;
+    -o-box-shadow: $h $v $b $s $c;
+    box-shadow: $h $v $b $s $c; }
+
+$text-horizontal_offset: 2px
+$text-vertical_offset: 2px
+$text-blur_radius: 2px
+@mixin z-text-shadow($h: $text-horizontal_offset, $v: $text-vertical_offset, $c: $shadow_color, $b: $text-blur_radius) {
+    -moz-text-shadow: $h $v $b $c;
+    -webkit-text-shadow: $h $v $b $c;
+    -o-text-shadow: $h $v $b $c;
+    text-shadow: $h $v $b $c; }

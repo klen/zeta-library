@@ -171,8 +171,17 @@ b],f.body["scroll"+b],f.documentElement["scroll"+b],f.body["offset"+b],f.documen
 
 
 // ==============================
-// Zeta import: 'zeta://zeta.js'
+// Zeta import: 'zeta://f/jquery.js'
 // From: 'zeta://f/jquery/jquery-1.4.4.min.js'
+/* 
+jQuery is a fast and concise JavaScript Library. See http://jquery.com
+1.4.4
+ */
+
+
+// ==============================
+// Zeta import: 'zeta://zeta.js'
+// From: 'zeta://f/jquery.js'
 // Zeta base support
 // --------------------
 
