@@ -1,6 +1,9 @@
 /* fonts.css from the YUI Library: developer.yahoo.com/yui/
    refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */ 
 
+@import url(zeta://z/z-options.scss);
+@import url(zeta://z/z-helpers.scss);
+
 body {
     *font-size: small;
     font: 13px/1.231 sans-serif}
