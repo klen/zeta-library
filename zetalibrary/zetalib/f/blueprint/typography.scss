@@ -19,8 +19,8 @@ $blueprint-font-size: 12px !default;
 @mixin normal-text      { font-family: $blueprint-font-family; color: $font_color; }
 @mixin fixed-width-text { font: 1em $blueprint-fixed-font-family; line-height: 1.5; }
 @mixin header-text      { font-weight: normal; color: $header_color; }
-@mixin quiet            { color: $quiet-color; }
-@mixin loud             { color: $loud-color; }
+@mixin quiet            { color: $quiet_color; }
+@mixin loud             { color: $loud_color; }
 
 @mixin blueprint-typography-defaults {
 

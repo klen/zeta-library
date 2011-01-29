@@ -223,10 +223,10 @@ caption {
 	background: #eee}
 
 .quiet {
-	color: 0}
+	color: #777}
 
 .loud {
-	color: 0}
+	color: #222}
 /* Blueprint utilities */ 
 
 .clear {
