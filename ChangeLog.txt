@@ -1,3 +1,8 @@
+## 2011-01-31 0.3.1
+
+* Migrate to jquery 1.5
+
+
 ## 2011-01-28 0.3.0
 
 * Fix blueprint

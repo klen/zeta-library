@@ -1,3 +1,4 @@
 Fix recursion error in folder parse
+Add css formating http://habrahabr.ru/blogs/css/112827/
 Create custom zeta format file with css and js blocks
 Move base zeta js to prototype.

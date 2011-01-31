@@ -13,7 +13,7 @@ require("f/jquery.js");
 
         history: [],
 
-        blockInit: function(context, selector) {
+        start: function(context, selector) {
 
             context = context || document;
 
@@ -50,6 +50,6 @@ require("f/jquery.js");
 
     document.documentElement.className += 'js'
 
-    $(document).ready(function(){ zeta.blockInit() });
+    $(document).ready(function(){ zeta.start() });
 
 })(jQuery);
