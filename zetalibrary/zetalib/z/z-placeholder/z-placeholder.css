@@ -1,0 +1,13 @@
+.js .z-placeholder
+{
+    position: absolute;
+
+    z-index: 2;
+
+    margin: 0.2em;
+
+    cursor: text;
+
+    color: #999;
+}
+
