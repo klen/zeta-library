@@ -8,7 +8,13 @@ install: remove _install clean
 
 register: _register clean
 
+remove:
+	sudo pip uninstall $(MODULE)
+
 upload: _upload install _commit
+
+test:
+	python $(MODULE)/tests/__init__.py
 
 _upload:
 	python setup.py sdist upload
@@ -23,11 +29,5 @@ _commit:
 _register:
 	python setup.py register
 
-remove:
-	sudo pip uninstall $(MODULE)
-
 _install:
 	sudo pip install -U .
-
-test:
-	python $(MODULE)/tests/__init__.py

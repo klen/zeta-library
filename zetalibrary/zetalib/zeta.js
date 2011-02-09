@@ -13,6 +13,8 @@ require("f/jquery.js");
 
         history: [],
 
+        el: {},
+
         start: function(context, selector) {
 
             context = context || document;
@@ -35,8 +37,9 @@ require("f/jquery.js");
                         .data(name, true)
                         .addClass(name + '_js');
 
+                    zeta.el[ name ] = zeta.el[ name ] || [];
+                    zeta.el[ name ].push(block);
                     init.call(block, params);
-
                 }
 
             });

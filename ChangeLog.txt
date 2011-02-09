@@ -1,3 +1,8 @@
+## 2011-02-09 0.3.3
+
+* JS now save zeta objects context
+
+
 ## 2011-02-02 0.3.2
 
 * Add z-placeholder block

@@ -44,6 +44,8 @@ jQuery is a fast and concise JavaScript Library. See http://jquery.com
 
         history: [],
 
+        el: {},
+
         start: function(context, selector) {
 
             context = context || document;
@@ -66,8 +68,9 @@ jQuery is a fast and concise JavaScript Library. See http://jquery.com
                         .data(name, true)
                         .addClass(name + '_js');
 
+                    zeta.el[ name ] = zeta.el[ name ] || [];
+                    zeta.el[ name ].push(block);
                     init.call(block, params);
-
                 }
 
             });
