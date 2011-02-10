@@ -31,10 +31,10 @@ caption, th, td {
 	vertical-align: middle}
 
 q, blockquote {
-	quotes: "" ""}
+	quotes: '' ''}
 
 q:before, q:after, blockquote:before, blockquote:after {
-	content: ""}
+	content: ''}
 
 a img {
 	border: none}

@@ -48,10 +48,10 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
         .prepend-#{$n} {
             @include prepend($n); } }
 
-    #{enumerate(.pull-, 1, $blueprint_grid_cells)} {
+    #{enumerate('.pull-', 1, $blueprint_grid_cells)} {
         @include pull-base; }
 
-    #{enumerate(.push-, 1, $blueprint_grid_cells)} {
+    #{enumerate('.push-', 1, $blueprint_grid_cells)} {
         @include push-base; }
 
     .prepend-top {
@@ -97,12 +97,12 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
 
 @mixin pull-margins($n, $last: false) {
   @if $last {
-    margin-left: 0-$blueprint_grid_outer_width * $n + $blueprint_grid_margin; }
+    margin-left: -$blueprint_grid_outer_width * $n + $blueprint_grid_margin; }
   @else {
-    margin-left: 0-$blueprint_grid_outer_width * $n; } }
+    margin-left: -$blueprint_grid_outer_width * $n; } }
 
 @mixin push-margins($n) {
-    margin: 0 (0-$blueprint_grid_outer_width * $n) 1.5em $blueprint_grid_outer_width * $n; }
+    margin: 0 ( -$blueprint_grid_outer_width * $n ) 1.5em $blueprint_grid_outer_width * $n; }
 
 @mixin push-base {
     @include float-right;
