@@ -86,11 +86,11 @@ h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
 h1 {
 	font-size: 3em;
 	line-height: 1;
-	margin-bottom: 0.5em}
+	margin-bottom: .5em}
 
 h2 {
 	font-size: 2em;
-	margin-bottom: 0.75em}
+	margin-bottom: .75em}
 
 h3 {
 	font-size: 1.5em;
@@ -240,7 +240,7 @@ caption {
 	zoom: 1}
 
 .small {
-	font-size: 0.8em;
+	font-size: .8em;
 	line-height: 1.875em;
 	margin-bottom: 1.875em}
 
@@ -279,7 +279,7 @@ legend {
 
 input.text, input.title, input[type=email], input[type=text], input[type=password] {
 	background-color: white;
-	margin: 0.5em 0;
+	margin: .5em 0;
 	padding: 5px}
 
 input.title {
@@ -287,14 +287,14 @@ input.title {
 
 input[type=checkbox], input.checkbox, input[type=radio], input.radio {
 	position: relative;
-	top: 0.25em}
+	top: .25em}
 
 textarea {
-	margin: 0.5em 0;
+	margin: .5em 0;
 	padding: 5px}
 
 select {
-	margin: 0.5em 0}
+	margin: .5em 0}
 
 fieldset {
 	border: 1px solid #ccc}
@@ -319,7 +319,7 @@ textarea {
 	border-color: #fbc2c4;
 	color: #8a1f11;
 	margin-bottom: 1em;
-	padding: 0.8em}
+	padding: .8em}
 
 .error a {
 	color: #8a1f11}
@@ -330,7 +330,7 @@ textarea {
 	border-color: #ffd324;
 	color: #514721;
 	margin-bottom: 1em;
-	padding: 0.8em}
+	padding: .8em}
 
 .notice a {
 	color: #514721}
@@ -341,7 +341,7 @@ textarea {
 	border-color: #c6d880;
 	color: #264409;
 	margin-bottom: 1em;
-	padding: 0.8em}
+	padding: .8em}
 
 .success a {
 	color: #264409}
