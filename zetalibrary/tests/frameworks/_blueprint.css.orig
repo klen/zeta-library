@@ -1,7 +1,7 @@
 /* ============================== */
 /* Zeta import: 'zeta://f/blueprint/all.scss' */
 /* From: 'None' */
-/* Blueprint Reset */ 
+/* Blueprint Reset */
 
 html, body {
 	border: 0;
@@ -68,7 +68,7 @@ table {
 
 a img {
 	border: none}
-/* Blueprint Typography */ 
+/* Blueprint Typography */
 
 body {
 	color: #444;
@@ -227,7 +227,7 @@ caption {
 
 .loud {
 	color: #222}
-/* Blueprint utilities */ 
+/* Blueprint utilities */
 
 .clear {
 	clear: both}
@@ -264,7 +264,7 @@ caption {
 .bottom {
 	margin-bottom: 0;
 	padding-bottom: 0}
-/* Blueprint form */ 
+/* Blueprint form */
 
 label {
 	font-weight: bold}
@@ -311,7 +311,7 @@ input.text, input.title, input[type=email], input[type=text], input[type=passwor
 textarea {
 	height: 250px;
 	width: 390px}
-/* Blueprint interaction */ 
+/* Blueprint interaction */
 
 .error {
 	background: #fbe3e4;
@@ -359,7 +359,7 @@ textarea {
 .removed {
 	background: #900;
 	color: white}
-/* Blueprint grid */ 
+/* Blueprint grid */
 
 .container {
 	margin: 0 auto;

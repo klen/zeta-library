@@ -55,7 +55,7 @@ table {
 /* Zeta import: 'zeta://z/z-base/z-base.scss' */
 /* From: 'zeta://z/z-reset/z-reset.css' */
 /* fonts.css from the YUI Library: developer.yahoo.com/yui/
-   refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */ 
+   refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */
 
 body {
 	*font-size: small;
@@ -142,7 +142,7 @@ label, input[type="button"], input[type="submit"], input[type="image"], button {
 
 button, input, select, textarea {
 	margin: 0}
-/* colors for form validity */ 
+/* colors for form validity */
 
 input:invalid, textarea:invalid {
 	-moz-box-shadow: 0px 0px 5px red;
