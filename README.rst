@@ -33,7 +33,7 @@ Features
 
 * **Boilerrplate framework support** Ex. ::
 
-    @import url( zeta://boilerplate.scss );
+    @import url( zeta://boilerplate.css );
 
 * **Zeta css, js framework** Ex: ::
 
@@ -99,7 +99,28 @@ http://packages.python.org/zetalibrary/changes.html
 
 Examples
 ==========
-Under construction.
+#. Parse all static files in directory ''/tmp/static'' with default prefix::
+    $> ls -la /tmp/static
+    drwxr-xr-x 4 www-data www-data 4096 2011-02-16 15:09 main
+    -rw-r--r-- 1 www-data www-data  335 2011-02-16 15:09 main.css
+    -rw-r--r-- 1 www-data www-data  343 2011-02-16 15:09 main.js
+    -rw-r--r-- 1 www-data www-data    0 2011-02-16 15:09 print.css
+
+    $> zeta /tmp/static
+    ...
+    $> ls -la /tmp/static
+    drwxr-xr-x 4 www-data www-data 4096 2011-02-16 15:09 main
+    -rw-r--r-- 1 www-data www-data  335 2011-02-16 15:09 main.css
+    -rw-r--r-- 1 www-data www-data  335 2011-02-16 15:09 _main.css
+    -rw-r--r-- 1 www-data www-data  343 2011-02-16 15:09 main.js
+    -rw-r--r-- 1 www-data www-data  343 2011-02-16 15:09 _main.js
+    -rw-r--r-- 1 www-data www-data    0 2011-02-16 15:09 print.css
+    -rw-r--r-- 1 www-data www-data    0 2011-02-16 15:09 _print.css
+
+
+#. Parse /static/main.js ::
+
+    $> zeta /static/main.js
 
 
 Options
