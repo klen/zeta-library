@@ -100,6 +100,7 @@ http://packages.python.org/zetalibrary/changes.html
 Examples
 ==========
 #. Parse all static files in directory ''/tmp/static'' with default prefix::
+
     $> ls -la /tmp/static
     drwxr-xr-x 4 www-data www-data 4096 2011-02-16 15:09 main
     -rw-r--r-- 1 www-data www-data  335 2011-02-16 15:09 main.css
