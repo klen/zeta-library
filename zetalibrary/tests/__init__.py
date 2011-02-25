@@ -5,7 +5,10 @@ def all_tests_suite():
     return unittest.TestLoader().loadTestsFromNames([
         'zetalibrary.tests.main',
         'zetalibrary.tests.zeta',
-        'zetalibrary.tests.frameworks',
+        'zetalibrary.tests.boilerplate',
+        'zetalibrary.tests.blueprint',
+        'zetalibrary.tests.compass',
+        'zetalibrary.tests.jquery',
     ])
 
 

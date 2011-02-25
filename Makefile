@@ -11,7 +11,7 @@ register: _register clean
 remove:
 	sudo pip uninstall $(MODULE)
 
-upload: _upload install _commit
+upload: _upload install _commit doc
 
 test:
 	python $(MODULE)/tests/__init__.py
@@ -31,3 +31,7 @@ _register:
 
 _install:
 	sudo pip install -U .
+
+doc:
+	python setup.py build_sphinx --source-dir=docs/ --build-dir=docs/_build --all-files
+	python setup.py upload_sphinx --upload-dir=docs/_build/html

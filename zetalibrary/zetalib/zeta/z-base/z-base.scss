@@ -1,0 +1,115 @@
+/* fonts.css from the YUI Library: developer.yahoo.com/yui/
+   refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */ 
+
+@import url(../z-options.scss);
+@import url(../z-helpers.scss);
+
+body {
+    *font-size: small;
+    font: 13px/1.231 sans-serif}
+
+select, input, textarea, button {
+    font: 99% sans-serif}
+
+pre, code, kbd, samp {
+    font-family: monospace, sans-serif}
+
+body, select, input, textarea {
+    color: $z-font-color;
+    font-family: $z-font-family; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold; }
+
+html {
+    overflow-y: scroll; }
+
+a:hover, a:active {
+    outline: none; }
+
+a, a:active, a:visited {
+    color: $z-link-color; }
+
+a:hover {
+    color: $z-link-hover-color; }
+
+ul, ol {
+    margin-left: 1.8em; }
+
+ol {
+    list-style-type: decimal; }
+
+nav ul, nav li {
+    margin: 0; }
+
+small {
+    font-size: 85%; }
+
+strong, th {
+    font-weight: bold; }
+
+td, td img {
+    vertical-align: top; }
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative; }
+
+sup {
+    top: -0.5em; }
+
+sub {
+    bottom: -0.25em; }
+
+pre {
+  padding: 15px;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word; }
+
+textarea {
+    overflow: auto; }
+
+input[type="radio"] {
+    vertical-align: text-bottom; }
+
+input[type="checkbox"] {
+    vertical-align: bottom; }
+
+.ie7 input[type="checkbox"] {
+    vertical-align: baseline; }
+
+.ie6 input {
+    vertical-align: text-bottom; }
+
+label, input[type="button"], input[type="submit"], input[type="image"], button {
+    cursor: pointer; }
+
+button, input, select, textarea {
+    margin: 0; }
+
+/* colors for form validity */
+input:invalid, textarea:invalid {
+    border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px $z-invalid-color;
+    -webkit-box-shadow: 0px 0px 5px $z-invalid-color;
+    box-shadow: 0px 0px 5px $z-invalid-color; }
+
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
+    background-color: $z-invalid-color; }
+
+::-moz-selection{
+    background: $z-selection-bgcolor;
+    color: $z-selection-fontcolor;
+    text-shadow: none; }
+
+::selection {
+    background: $z-selection-bgcolor;
+    color: $z-selection-fontcolor;
+    text-shadow: none; }
+
+button {
+    width: auto;
+    overflow: visible; }

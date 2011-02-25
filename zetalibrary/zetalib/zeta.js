@@ -1,7 +1,9 @@
-// Zeta base support
-// --------------------
+/* 
+Part of zeta framework. Include jQuery.
 
-require("f/jquery.js");
+ */
+
+require("jquery.js");
 
 
 (function($){

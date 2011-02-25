@@ -87,7 +87,7 @@ class Linker( object ):
 
 
 def get_frameworks():
-    path = os.path.join(ZETALIBDIR, 'f')
+    path = os.path.join(ZETALIBDIR)
     for fname in os.listdir(path):
         fpath = os.path.join(path, fname)
         if os.path.isfile(fpath):
@@ -96,12 +96,11 @@ def get_frameworks():
 
 
 def get_blocks():
-    path = os.path.join(ZETALIBDIR, 'z')
+    path = os.path.join(ZETALIBDIR, 'zeta')
     for bname in os.listdir(path):
         bpath = os.path.join(path, bname)
         if os.path.isdir(bpath):
             yield ( bname, '')
-
 
 
 def route( path, prefix='_' ):

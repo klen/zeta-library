@@ -1,5 +1,5 @@
 /* ============================== */
-/* Zeta import: 'zeta://z/z-reset/z-reset.css' */
+/* Zeta import: 'zeta://zeta/z-reset/z-reset.css' */
 /* From: 'None' */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -52,14 +52,14 @@ table {
 
 
 /* ============================== */
-/* Zeta import: 'zeta://z/z-base/z-base.scss' */
-/* From: 'zeta://z/z-reset/z-reset.css' */
+/* Zeta import: 'zeta://zeta/z-base/z-base.scss' */
+/* From: 'zeta://zeta/z-reset/z-reset.css' */
 /* fonts.css from the YUI Library: developer.yahoo.com/yui/
    refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */
 
 body {
-	*font-size: small;
-	font: 13px/1.231 sans-serif}
+	font: 13px/1.231 sans-serif;
+	*font-size: small}
 
 select, input, textarea, button {
 	font: 99% sans-serif}
@@ -105,9 +105,9 @@ td, td img {
 	vertical-align: top}
 
 sub, sup {
-	font-size: 75%;
+	position: relative;
 	line-height: 0;
-	position: relative}
+	font-size: 75%}
 
 sup {
 	top: -0.5em}
@@ -145,10 +145,10 @@ button, input, select, textarea {
 /* colors for form validity */
 
 input:invalid, textarea:invalid {
-	-moz-box-shadow: 0px 0px 5px red;
-	-webkit-box-shadow: 0px 0px 5px red;
-	border-radius: 1px;
-	box-shadow: 0px 0px 5px red}
+	box-shadow: 0 0 5px red;
+	-webkit-box-shadow: 0 0 5px red;
+	-moz-box-shadow: 0 0 5px red;
+	border-radius: 1px}
 
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
 	background-color: red}
@@ -163,17 +163,14 @@ input:invalid, textarea:invalid {
 	color: #fff;
 	text-shadow: none}
 
-a:link {
-	-webkit-tap-highlight-color: #ff5e99}
-
 button {
 	overflow: visible;
 	width: auto}
 
 
 /* ============================== */
-/* Zeta import: 'zeta://z/z-typography/z-typography.css' */
-/* From: 'zeta://z/z-base/z-base.scss' */
+/* Zeta import: 'zeta://zeta/z-typography/z-typography.css' */
+/* From: 'zeta://zeta/z-base/z-base.scss' */
 h1 {
 	font-size: 3em;
 	line-height: 1;
@@ -231,8 +228,8 @@ address {
 
 
 /* ============================== */
-/* Zeta import: 'zeta://z/z-grid/z-grid.scss' */
-/* From: 'zeta://z/z-typography/z-typography.css' */
+/* Zeta import: 'zeta://zeta/z-grid/z-grid.scss' */
+/* From: 'zeta://zeta/z-typography/z-typography.css' */
 .z-grid-1 {
 	width: 60px}
 
@@ -270,17 +267,17 @@ address {
 	width: 940px}
 
 .z-grid_table {
-	margin: 0 auto;
 	overflow: hidden;
-	width: 960px;
-	zoom: 1}
+	zoom: 1;
+	margin: 0 auto;
+	width: 960px}
 
 .z-grid_column {
-	display: inline;
 	float: left;
-	margin: 0 10px;
+	display: inline;
 	overflow: hidden;
-	zoom: 1}
+	zoom: 1;
+	margin: 0 10px}
 
 .z-grid_row {
 	display: inline-block;
@@ -290,36 +287,30 @@ address {
 
 /* ============================== */
 /* Zeta import: '/home/klen/Projects/github.com/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
-/* From: 'zeta://z/z-grid/z-grid.scss' */
+/* From: 'zeta://zeta/z-grid/z-grid.scss' */
 .test {
-	-moz-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
-	-o-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
-	-webkit-text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
-	background-repeat: no-repeat;
-	direction: ltr;
+	float: left;
 	display: block;
 	display: inline;
-	float: left;
 	overflow: hidden;
 	overflow: hidden;
+	zoom: 1;
+	background-repeat: no-repeat;
+	direction: ltr;
 	text-align: left;
-	text-indent: -999em;
-	text-shadow: 2px 2px 2px rgba(10, 10, 10, .45);
-	zoom: 1}
+	text-indent: -999em}
 
 .test_center {
 	display: block;
-	margin-left: auto;
-	margin-right: auto}
+	margin-right: auto;
+	margin-left: auto}
 
 .test_center_round {
-	-moz-border-radius: 3px 3px;
-	-moz-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
-	-o-border-radius: 3px 3px;
-	-o-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
+	box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
+	-webkit-box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
+	-moz-box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
 	-webkit-border-radius: 3px 3px;
-	-webkit-box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45);
-	border-radius: 3px 3px;
-	box-shadow: 3px 4px 3px 1px rgba(10, 10, 10, .45)}
+	-moz-border-radius: 3px 3px;
+	border-radius: 3px 3px}
 
 

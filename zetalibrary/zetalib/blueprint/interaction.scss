@@ -1,0 +1,64 @@
+@import url(colors.scss);
+
+@mixin blueprint-interaction {
+
+    .error {
+        @include error; }
+
+    .notice {
+        @include notice; }
+
+    .success {
+        @include success; }
+
+    .hide {
+        display: none; }
+
+    .highlight {
+        @include highlight; }
+
+    .added {
+        @include added; }
+
+    .removed {
+        @include removed; } }
+
+@mixin feedback-base {
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 2px solid $feedback-border-color; }
+
+@mixin error {
+    @include feedback-base;
+    background: $error-bg-color;
+    color: $error-color;
+    border-color: $error-border-color;
+    a {
+        color: $error-color; } }
+
+@mixin notice {
+    @include feedback-base;
+    background: $notice-bg-color;
+    color: $notice-color;
+    border-color: $notice-border-color;
+    a {
+        color: $notice-color; } }
+
+@mixin success {
+    @include feedback-base;
+    background: $success-bg-color;
+    color: $success-color;
+    border-color: $success-border-color;
+    a {
+        color: $success-color; } }
+
+@mixin highlight {
+    background: $highlight-color; }
+
+@mixin added {
+    background: $added-bg-color;
+    color: $added-color; }
+
+@mixin removed {
+    background: $removed-bg-color;
+    color: $removed-color; }

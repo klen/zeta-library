@@ -1,4 +1,8 @@
-@import url(z/z-reset/z-reset.css);
-@import url(z/z-base/z-base.css);
-@import url(z/z-typography/z-typography.css);
-@import url(z/z-grid/z-grid.css);
+/* 
+Zeta is a static framework.
+
+ */
+@import url(zeta/z-reset/z-reset.css);
+@import url(zeta/z-base/z-base.scss);
+@import url(zeta/z-typography/z-typography.css);
+@import url(zeta/z-grid/z-grid.scss);

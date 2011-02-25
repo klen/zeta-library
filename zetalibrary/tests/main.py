@@ -1,7 +1,7 @@
 import os.path
 import unittest
 
-from zetalibrary.main import route, get_frameworks
+from zetalibrary.main import route, get_frameworks, get_blocks
 
 
 BASEDIR = os.path.realpath(os.path.dirname(__file__))
@@ -20,3 +20,7 @@ class TestLinker( unittest.TestCase ):
     def test_getframework(self):
         frameworks = list(get_frameworks())
         self.assertTrue(len(frameworks))
+
+    def test_getblocks(self):
+        blocks = list(get_blocks())
+        self.assertTrue(len(blocks))

@@ -1,4 +1,7 @@
+Add scss options
+Migrate blueprint scss and compass to original
 Fix comments in imports
 Fix recursion error in folder parse
 Add css formating http://habrahabr.ru/blogs/css/112827/
 Create custom zeta format file with css and js blocks
+Move zeta to Zeta in proto
