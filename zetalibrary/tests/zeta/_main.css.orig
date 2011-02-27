@@ -77,13 +77,13 @@ h1, h2, h3, h4, h5, h6 {
 html {
 	overflow-y: scroll}
 
-a:hover, a:active {
+:hover, :active {
 	outline: none}
 
-a, a:active, a:visited {
+a, :active, :visited {
 	color: #607890}
 
-a:hover {
+:hover {
 	color: #036}
 
 ul, ol {
@@ -266,7 +266,7 @@ address {
 .z-grid-12 {
 	width: 940px}
 
-.z-grid_table {
+.z-grid_row {
 	overflow: hidden;
 	zoom: 1;
 	margin: 0 auto;
@@ -279,7 +279,7 @@ address {
 	zoom: 1;
 	margin: 0 10px}
 
-.z-grid_row {
+.z-grid_row .z-grid_row {
 	display: inline-block;
 	margin: 0 -10px;
 	width: auto}
