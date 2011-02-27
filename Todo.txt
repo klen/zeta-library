@@ -1,4 +1,6 @@
 Add scss options
+Add scss path support
+Add watch mode
 Migrate blueprint scss and compass to original
 Fix comments in imports
 Fix recursion error in folder parse

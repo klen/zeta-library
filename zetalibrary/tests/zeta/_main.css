@@ -286,8 +286,17 @@ address {
 
 
 /* ============================== */
-/* Zeta import: '/home/klen/Projects/github.com/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
+/* Zeta import: 'zeta://zeta.css' */
 /* From: 'zeta://zeta/z-grid/z-grid.scss' */
+/* 
+Zeta is a static framework.
+
+ */
+
+
+/* ============================== */
+/* Zeta import: '/home/klen/Projects/github.com/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
+/* From: 'zeta://zeta.css' */
 .test {
 	float: left;
 	display: block;

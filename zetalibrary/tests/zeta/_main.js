@@ -31,8 +31,10 @@ jQuery is a fast and concise JavaScript Library. See http://jquery.com
 // ==============================
 // Zeta import: 'zeta://zeta.js'
 // From: 'zeta://jquery.js'
-// Zeta base support
-// --------------------
+/* 
+Part of zeta framework. Include jQuery.
+
+ */
 
 
 (function($){
