@@ -83,7 +83,7 @@ html {
 a, :active, :visited {
 	color: #607890}
 
-:hover {
+a:hover {
 	color: #036}
 
 ul, ol {

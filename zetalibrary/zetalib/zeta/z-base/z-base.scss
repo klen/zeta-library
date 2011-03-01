@@ -30,7 +30,7 @@ html {
 a, :active, :visited {
     color: $z-link-color; }
 
-:hover {
+a:hover {
     color: $z-link-hover-color; }
 
 ul, ol {
