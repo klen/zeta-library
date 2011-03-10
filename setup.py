@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 import os
+from sys import version_info
 
 from setuptools import setup, find_packages
 
-from zetalibrary import VERSION, PROJECT, LICENSE
+from zetalibrary import version, PROJECT, LICENSE
 
 
 def read( fname ):
@@ -18,9 +19,13 @@ for root, dirs, files in os.walk( os.path.join( PROJECT, 'zetalib' ) ):
     for filename in files:
         PACKAGE_DATA.append("%s/%s" % ( root[len(PROJECT)+1:], filename ))
 
+install_requires = [ 'scss' ]
+if version_info < (2, 7):
+    install_requires.append('argparse')
+
 META_DATA = dict(
     name=PROJECT,
-    version=VERSION,
+    version=version,
     license=LICENSE,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
@@ -50,7 +55,7 @@ META_DATA = dict(
         ]
     },
 
-    install_requires = [ 'scss' ]
+    install_requires = install_requires,
 )
 
 if __name__ == "__main__":

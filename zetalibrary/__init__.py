@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import os.path
 
-VERSION_INFO = (0, 3, 93)
+version_info = (0, 3, 94)
 
+__version__ = version = '.'.join(map(str, version_info))
 __project__ = PROJECT = __name__
-__version__ = VERSION = '.'.join(str(i) for i in VERSION_INFO)
 __author__ = AUTHOR = "Kirill Klenov <horneds@gmail.com>"
 __license__ = LICENSE = "GNU LGPL"
 

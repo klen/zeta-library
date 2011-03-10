@@ -1,4 +1,4 @@
-import optparse
+import argparse
 import os.path
 import sys
 
@@ -126,55 +126,50 @@ def route( path, prefix='_' ):
 def main():
     """ Parse arguments.
     """
-    p = optparse.OptionParser(
-        usage="%prog [--prefix PREFIX] FILENAME or DIRNAME",
-        description="Parse file or dir, import css, js code and save with prefix.")
+    p = argparse.ArgumentParser(
+            description="Parse file or dir, import css, js code and save with prefix.")
 
-    p.add_option(
+    p.add_argument('source', help="filename or dirname")
+
+    p.add_argument(
         '-p', '--prefix', default='_', dest='prefix',
         help="Save result with prefix. Default is '_'.")
 
-    p.add_option(
-        '-f', '--format', dest='format',
-        help="Force use this format.")
+    p.add_argument(
+        '-f', '--format', dest='format', help="Force use this format.")
 
-    p.add_option(
+    p.add_argument(
         '-n', '--no-comments', action='store_true', dest='no_comments',
         help="Clear comments.")
 
-    p.add_option(
+    p.add_argument(
         '-w', '--show-frameworks', action='store_true', dest='frameworks',
         help="Show available frameworks.")
 
-    p.add_option(
+    p.add_argument(
         '-z', '--show-blocks', action='store_true', dest='zeta',
         help="Show available zeta blocks.")
 
-    options, args = p.parse_args()
+    args = p.parse_args()
 
-    if options.frameworks:
+    if args.frameworks:
         for framework in get_frameworks():
             sys.stdout.write('%s%s%s %s%s\n' % ( COLORS['okgreen'], framework[0], COLORS['endc'], framework[1], framework[2]))
         sys.exit()
 
-    if options.zeta:
+    if args.zeta:
         for block in get_blocks():
             sys.stdout.write('%s%s%s%s\n' % ( COLORS['okgreen'], block[0], COLORS['endc'], block[1],))
         sys.exit()
 
-    if len(args) != 1:
-        p.print_help(sys.stdout)
-        return
-
-    path = args[0]
     try:
-        assert os.path.exists(path)
+        assert os.path.exists(args.source)
     except AssertionError:
-        p.error("%s'%s' does not exist.%s" % (args[0], COLORS['fail'], COLORS['endc']))
+        p.error("%s'%s' does not exist.%s" % (args.source, COLORS['fail'], COLORS['endc']))
 
-    for path in route(path, options.prefix):
+    for path in route(args.source, args.prefix):
         try:
-            linker = Linker(path, prefix=options.prefix, no_comments=options.no_comments, format=options.format)
+            linker = Linker(path, prefix=args.prefix, no_comments=args.no_comments, format=args.format)
             linker.link()
         except ZetaError, ex:
             p.error("%s%s%s" % (ex, COLORS['fail'], COLORS['warning']))
