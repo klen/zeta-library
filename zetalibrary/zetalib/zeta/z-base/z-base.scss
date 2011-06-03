@@ -27,7 +27,7 @@ html {
 :hover, :active {
     outline: none; }
 
-a, :active, :visited {
+a, a:active, a:visited {
     color: $z-link-color; }
 
 a:hover {

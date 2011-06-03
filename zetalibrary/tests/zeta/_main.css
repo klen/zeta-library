@@ -80,7 +80,7 @@ html {
 :hover, :active {
 	outline: none}
 
-a, :active, :visited {
+a, a:active, a:visited {
 	color: #607890}
 
 a:hover {
