@@ -50,11 +50,11 @@ require("jquery.js");
 
     zeta.log = function(){
         zeta.history.push(arguments);
-        if(window.console) window.console.log(Array.prototype.slice.call(arguments));
+        if(window.console) { window.console.log(Array.prototype.slice.call(arguments)); }
     };
 
-    document.documentElement.className += 'js'
+    document.documentElement.className += ' js';
 
-    $(document).ready(function(){ zeta.start() });
+    $(document).ready(function(){ zeta.start(); });
 
 })(jQuery);
