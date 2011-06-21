@@ -6,9 +6,9 @@ def all_tests_suite():
         'zetalibrary.tests.main',
         'zetalibrary.tests.zeta',
         'zetalibrary.tests.boilerplate',
-        'zetalibrary.tests.blueprint',
         'zetalibrary.tests.compass',
         'zetalibrary.tests.jquery',
+        'zetalibrary.tests.blueprint',
     ])
 
 

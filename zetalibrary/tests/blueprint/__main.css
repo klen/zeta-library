@@ -1,8 +1,6 @@
 /* ============================== */
 /* Zeta import: 'zeta://blueprint/all.scss' */
 /* From: 'None' */
-/* Blueprint Reset */
-
 html, body {
 	margin: 0;
 	padding: 0;
@@ -37,7 +35,7 @@ blockquote, q {
 	font-size: 100%;
 	font-family: inherit}
 
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,  blockquote:after, q:before,  q:after {
 	content: ''}
 
 th, td, caption {
@@ -47,8 +45,8 @@ th, td, caption {
 	vertical-align: baseline;
 	vertical-align: middle;
 	text-align: left;
-	font-weight: normal;
 	font-weight: inherit;
+	font-weight: normal;
 	font-style: inherit;
 	font-size: 100%;
 	font-family: inherit}
@@ -68,7 +66,6 @@ table {
 
 a img {
 	border: none}
-/* Blueprint Typography */
 
 body {
 	color: #444;
@@ -227,7 +224,6 @@ caption {
 
 .loud {
 	color: #222}
-/* Blueprint utilities */
 
 .clear {
 	clear: both}
@@ -264,7 +260,6 @@ caption {
 .bottom {
 	margin-bottom: 0;
 	padding-bottom: 0}
-/* Blueprint form */
 
 label {
 	font-weight: bold}
@@ -277,15 +272,15 @@ legend {
 	font-weight: bold;
 	font-size: 1.2em}
 
-input.text, input.title, input[type=email], input[type=text], input[type=password] {
+input.text,  input.title,  input[type=email],  input[type=text],  input[type=password] {
 	margin: .5em 0;
 	padding: 5px;
-	background-color: white}
+	background-color: #fff}
 
 input.title {
 	font-size: 1.5em}
 
-input[type=checkbox], input.checkbox, input[type=radio], input.radio {
+input[type=checkbox],  input.checkbox,  input[type=radio],  input.radio {
 	position: relative;
 	top: .25em}
 
@@ -305,13 +300,12 @@ input.text, input.title, input[type=email], input[type=text], input[type=passwor
 input.text:focus, input.title:focus, input[type=email]:focus, input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
 	border: 1px solid #666}
 
-input.text, input.title, input[type=email], input[type=text], input[type=password] {
+input.text,  input.title,  input[type=email],  input[type=text],  input[type=password] {
 	width: 300px}
 
 textarea {
 	width: 390px;
 	height: 250px}
-/* Blueprint interaction */
 
 .error {
 	margin-bottom: 1em;
@@ -350,16 +344,15 @@ textarea {
 	display: none}
 
 .highlight {
-	background: yellow}
+	background: #ff0}
 
 .added {
 	background: #060;
-	color: white}
+	color: #fff}
 
 .removed {
 	background: #900;
-	color: white}
-/* Blueprint grid */
+	color: #fff}
 
 .container {
 	overflow: hidden;
@@ -816,14 +809,5 @@ input.span-24, textarea.span-24, select.span-24 {
 
 .append-bottom {
 	margin-bottom: 1.5em}
-
-
-/* ============================== */
-/* Zeta import: 'zeta://blueprint.css' */
-/* From: 'zeta://blueprint/all.scss' */
-/* 
-Blueprint is a CSS framework. See: http://www.blueprintcss.org/ 
-1.0
- */
 
 

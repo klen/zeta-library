@@ -13,7 +13,7 @@ class TestFramework(unittest.TestCase):
     def test_framework(self):
         folder = os.path.join(BASEDIR, TEST_DIR_NAME)
         f = os.path.join(folder, 'main.css')
-        linker = Linker(f, no_comments=False)
+        linker = Linker(f, no_comments=True)
         linker.link()
         orig = open(os.path.join(folder, '__main.css')).read()
         test = open(os.path.join(folder, '_main.css')).read()

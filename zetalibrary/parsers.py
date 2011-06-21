@@ -2,7 +2,7 @@ import os.path
 import re
 import urllib2
 
-from scss.parser import Stylecheet
+from scss.parser import Stylesheet
 
 from zetalibrary import ZetaError, ZETALIBDIR
 
@@ -96,8 +96,8 @@ class SCSSParser(CSSParser):
     def parse_src(self, src, curdir, linker):
         src = super(SCSSParser, self).parse_src(src, curdir, linker)
         if not self.parser:
-            self.parser = Stylecheet()
-        return self.parser.parse(src)
+            self.parser = Stylesheet()
+        return self.parser.loads(src)
 
 
 class JSParser(Parser):

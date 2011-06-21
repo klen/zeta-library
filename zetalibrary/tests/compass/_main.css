@@ -13,8 +13,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font-family: inherit}
 
 body {
-	background: white;
-	color: black;
+	background: #fff;
+	color: #000;
 	line-height: 1}
 
 ol, ul {
@@ -33,7 +33,7 @@ caption, th, td {
 q, blockquote {
 	quotes: '' ''}
 
-q:before, q:after, blockquote:before, blockquote:after {
+q:before,  q:after, blockquote:before,  blockquote:after {
 	content: ''}
 
 a img {

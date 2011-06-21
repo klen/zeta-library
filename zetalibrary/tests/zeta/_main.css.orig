@@ -1,11 +1,6 @@
 /* ============================== */
 /* Zeta import: 'zeta://zeta/z-reset/z-reset.css' */
 /* From: 'None' */
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -26,7 +21,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -54,18 +49,15 @@ table {
 /* ============================== */
 /* Zeta import: 'zeta://zeta/z-base/z-base.scss' */
 /* From: 'zeta://zeta/z-reset/z-reset.css' */
-/* fonts.css from the YUI Library: developer.yahoo.com/yui/
-   refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages */
-
 body {
-	font: 13px/1.231 sans-serif;
+	font: 13px / 1.231 sans-serif;
 	*font-size: small}
 
 select, input, textarea, button {
 	font: 99% sans-serif}
 
 pre, code, kbd, samp {
-	font-family: monospace, sans-serif}
+	font-family: monospace , sans-serif}
 
 body, select, input, textarea {
 	color: #444;
@@ -142,16 +134,15 @@ label, input[type="button"], input[type="submit"], input[type="image"], button {
 
 button, input, select, textarea {
 	margin: 0}
-/* colors for form validity */
 
 input:invalid, textarea:invalid {
-	box-shadow: 0 0 5px red;
-	-webkit-box-shadow: 0 0 5px red;
-	-moz-box-shadow: 0 0 5px red;
+	box-shadow: 0 0 5px #f00;
+	-webkit-box-shadow: 0 0 5px #f00;
+	-moz-box-shadow: 0 0 5px #f00;
 	border-radius: 1px}
 
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
-	background-color: red}
+	background-color: #f00}
 
 ::-moz-selection {
 	background: #ff5e99;
@@ -286,17 +277,8 @@ address {
 
 
 /* ============================== */
-/* Zeta import: 'zeta://zeta.css' */
-/* From: 'zeta://zeta/z-grid/z-grid.scss' */
-/* 
-Zeta is a static framework.
-
- */
-
-
-/* ============================== */
 /* Zeta import: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
-/* From: 'zeta://zeta.css' */
+/* From: 'zeta://zeta/z-grid/z-grid.scss' */
 .test {
 	float: left;
 	display: block;
@@ -315,9 +297,9 @@ Zeta is a static framework.
 	margin-left: auto}
 
 .test_center_round {
-	box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
-	-webkit-box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
-	-moz-box-shadow: 3px 4px 3px 1px rgba(10,10,10,0.45);
+	box-shadow: 4px 3px 2px 1px rgba(10,10,10,0.45);
+	-webkit-box-shadow: 4px 3px 2px 1px rgba(10,10,10,0.45);
+	-moz-box-shadow: 4px 3px 2px 1px rgba(10,10,10,0.45);
 	-webkit-border-radius: 3px 3px;
 	-moz-border-radius: 3px 3px;
 	border-radius: 3px 3px}

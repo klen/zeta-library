@@ -33,7 +33,8 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
         .span-#{$n} { @include span($n); }
         input, textarea, select {
             &.span-#{$n} {
-                @include span($n, true); } } }
+                @include span($n, true); } }
+            }
 
     .span-#{$blueprint_grid_columns} {
         margin: 0; }
@@ -58,7 +59,9 @@ $blueprint_container_size: $blueprint_grid_outer_width * $blueprint_grid_columns
         @include prepend-top; }
 
     .append-bottom {
-        @include append-bottom; } }
+        @include append-bottom; }
+
+    }
 
 
 @mixin container {

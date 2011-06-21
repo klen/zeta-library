@@ -13,14 +13,14 @@ class TestZeta( unittest.TestCase ):
         folder = os.path.join(BASEDIR, 'zeta')
 
         css_file = os.path.join(folder, 'main.css')
-        linker = Linker(css_file, no_comments=False)
+        linker = Linker(css_file, no_comments=True)
         linker.link()
         orig = open(os.path.join(folder, '_main.css.orig')).read()
         test = open(os.path.join(folder, '_main.css')).read()
         self.assertEqual(test, orig)
 
         js_file = os.path.join(folder, 'main.js')
-        linker = Linker(js_file, no_comments=False)
+        linker = Linker(js_file, no_comments=True)
         linker.link()
         orig = open(os.path.join(folder, '_main.js.orig')).read()
         test = open(os.path.join(folder, '_main.js')).read()

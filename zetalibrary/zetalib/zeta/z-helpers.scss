@@ -91,9 +91,9 @@ $vround: 3px !default;
     border-bottom-right-radius: $h $v; }
 
 // Shadow
-$horizontal_offset: 3px !default;
-$vertical_offset: 4px !default;
-$blur_radius: 3px !default;
+$horizontal_offset: 4px !default;
+$vertical_offset: 3px !default;
+$blur_radius: 2px !default;
 $spread_radius: 1px !default;
 $shadow_color: rgba( 10, 10, 10, .45) !default;
 @mixin z-shadow($h: $horizontal_offset, $v: $vertical_offset, $c: $shadow_color, $b: $blur_radius, $s: $spread_radius) {

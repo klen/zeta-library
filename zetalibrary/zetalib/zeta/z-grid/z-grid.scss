@@ -13,7 +13,7 @@ $z-grid-center: true !default;
 
 .z-grid_row {
     width: $z-grid-columns * ($z-grid-width + $z-grid-cutter);
-    margin: 0 if( $z-grid-center, auto, $z-grid-cutter );
+    margin: 0 if($z-grid-center, auto, $z-grid-cutter);
     @include z-clearfix; }
 
 .z-grid_column {
