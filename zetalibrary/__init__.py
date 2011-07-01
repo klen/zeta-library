@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os.path
 
-version_info = (0, 4, 0)
+version_info = (0, 4, 1)
 
 __version__ = version = '.'.join(map(str, version_info))
 __project__ = PROJECT = __name__
