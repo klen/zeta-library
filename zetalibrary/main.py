@@ -1,9 +1,11 @@
 import argparse
 import os.path
 import sys
+import time
 
-from zetalibrary import ZetaError, ZETALIBDIR
+from zetalibrary import ZetaError, ZETALIBDIR, VERSION
 from zetalibrary.parsers import PARSERS
+from zetalibrary.utils import files_changed
 
 
 COLORS = dict(
@@ -143,7 +145,11 @@ def main():
         help="Clear comments.")
 
     p.add_argument(
-        '-w', '--show-frameworks', action='store_true', dest='frameworks',
+        '-w', '--watch', action='store_true', dest='watch',
+        help="Watch directory of file and recompile source if it edited.")
+
+    p.add_argument(
+        '-s', '--show-frameworks', action='store_true', dest='frameworks',
         help="Show available frameworks.")
 
     p.add_argument(
@@ -167,9 +173,36 @@ def main():
     except AssertionError:
         p.error("%s'%s' does not exist.%s" % (args.source, COLORS['fail'], COLORS['endc']))
 
-    for path in route(args.source, args.prefix):
-        try:
-            linker = Linker(path, prefix=args.prefix, no_comments=args.no_comments, format=args.format)
-            linker.link()
-        except ZetaError, ex:
-            p.error("%s%s%s" % (ex, COLORS['fail'], COLORS['warning']))
+    routes = list(route(args.source, args.prefix))
+
+    if not args.watch:
+        for path in routes:
+            try:
+                linker = Linker(path, prefix=args.prefix, no_comments=args.no_comments, format=args.format)
+                linker.link()
+            except ZetaError, ex:
+                p.error("%s%s%s" % (ex, COLORS['fail'], COLORS['warning']))
+
+    else:
+
+        if not os.path.exists(args.source):
+            p.error("%s%s%s" % ("Path don't exist: %s" % args.source, COLORS['fail'], COLORS['warning']))
+            sys.exit(1)
+
+        print 'Zeta-library v. %s watch mode' % VERSION
+        print '================================'
+        print 'Ctrl+C for exit\n'
+        while True:
+            try:
+                if files_changed(args.source, args.prefix):
+                    for path in routes:
+                        linker = Linker(path, prefix=args.prefix, no_comments=args.no_comments, format=args.format)
+                        linker.link()
+                time.sleep(.2)
+            except ZetaError, ex:
+                p.error("%s%s%s" % (ex, COLORS['fail'], COLORS['warning']))
+            except OSError:
+                pass
+            except KeyboardInterrupt:
+                print "\nWatch mode stoped."
+                break

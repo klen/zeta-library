@@ -4,7 +4,7 @@ from sys import version_info
 
 from setuptools import setup, find_packages
 
-from zetalibrary import version, PROJECT, LICENSE
+from zetalibrary import VERSION, PROJECT, LICENSE
 
 
 def read( fname ):
@@ -25,7 +25,7 @@ if version_info < (2, 7):
 
 META_DATA = dict(
     name=PROJECT,
-    version=version,
+    version=VERSION,
     license=LICENSE,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
