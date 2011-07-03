@@ -63,30 +63,62 @@ Usage
 
 $zeta ::
 
-    Usage: zeta [--prefix PREFIX] FILENAME or DIRNAME
+    $ zeta --help
+
+    usage: zeta [-h] [-p PREFIX] [-f FORMAT] [-n] [-w] [-s] [-z] source
 
     Parse file or dir, import css, js code and save with prefix.
 
-    Options:
+    positional arguments:
+    source                filename or dirname
+
+    optional arguments:
     -h, --help            show this help message and exit
-    -p PREFIX, --prefix=PREFIX
+    -p PREFIX, --prefix PREFIX
                             Save result with prefix. Default is '_'.
-    -f FORMAT, --format=FORMAT
+    -f FORMAT, --format FORMAT
                             Force use this format.
     -n, --no-comments     Clear comments.
-    -w, --show-frameworks
+    -w, --watch           Watch directory of file and recompile source if it
+                            edited.
+    -s, --show-frameworks
                             Show available frameworks.
     -z, --show-blocks     Show available zeta blocks.
 
 
 Frameworks
 ===========
-Under construction.
+$zeta -s . ::
+
+    zeta.css 
+    Zeta is a static framework.
+
+    zeta.js 
+    Part of zeta framework. Include jQuery.
+
+    boilerplate.css 0.9.5
+    HTML5 Boilerplate is the professional badass's base HTML/CSS/JS template for a fast, robust and future-proof site. See http://html5boilerplate.com/
+
+    compass.css 
+    Compass is a stylesheet authoring framework. See: http://compass-style.org/ 
+
+    blueprint.css 1.0
+    Blueprint is a CSS framework. See: http://www.blueprintcss.org/ 
+
+    jquery.js 1.6.2
+    jQuery is a fast and concise JavaScript Library. See http://jquery.com
 
 
 Zeta blocks
 ============
-Under construction.
+$ zeta -z . ::
+
+    z-base
+    z-print
+    z-grid
+    z-typography
+    z-placeholder
+    z-reset
 
 
 Changes
