@@ -174,6 +174,8 @@ Contributing
 
 Development of python-scss happens at github: https://github.com/klen/zeta-library
 
+* klen_ (Kirill Klenov)
+
 
 License
 =======
@@ -211,3 +213,4 @@ Note
 .. _compass: http://compass-style.org/
 .. _jQuery: http://jquery.com
 .. _python-scss: http://packages.python.org/scss/
+.. _klen: https://klen.github.com
