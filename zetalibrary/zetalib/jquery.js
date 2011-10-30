@@ -1,6 +1,6 @@
 /* 
 jQuery is a fast and concise JavaScript Library. See http://jquery.com
-1.6.2
+1.6.4
  */
 
-require('jquery/jquery-1.6.2.min.js');
+require('jquery/jquery-1.6.4.min.js');
