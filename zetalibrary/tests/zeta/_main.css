@@ -305,3 +305,25 @@ address {
 	border-radius: 3px 3px;}
 
 
+/* ============================== */
+/* Zeta import: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/main.css' */
+/* From: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
+@font-face {
+        font-family: 'MyMinionProItalic';
+    src: url(minionpro-it-webfont.eot?) format('eot'),
+         url(minionpro-it-webfont.woff) format('woff'),
+         url(minionpro-it-webfont.ttf) format('truetype');
+        font-weight: normal;
+        font-style: italic;
+}
+
+@font-face {
+        font-family: 'MyMinionPro';
+    src: url(minion-webfont.eot?) format('eot'),
+         url(minion-webfont.woff) format('woff'),
+         url(minion-webfont.ttf) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}
+
+
