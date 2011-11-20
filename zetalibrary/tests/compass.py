@@ -1,20 +1,24 @@
-import os.path
 import unittest
+from os import path as op
 
-from zetalibrary.main import Linker
-
-
-BASEDIR = os.path.realpath(os.path.dirname(__file__))
-TEST_DIR_NAME = 'compass'
+from zetalibrary.packer import Packer
 
 
-class TestFramework(unittest.TestCase):
+BASEDIR = op.dirname(__file__)
 
-    def test_framework(self):
-        folder = os.path.join(BASEDIR, TEST_DIR_NAME)
-        f = os.path.join(folder, 'main.css')
-        linker = Linker(f, no_comments=False)
-        linker.link()
-        orig = open(os.path.join(folder, '__main.css')).read()
-        test = open(os.path.join(folder, '_main.css')).read()
+class FakeArgs():
+    def __init__(self):
+        self.format = None
+        self.prefix = '_'
+        self.compress = False
+
+
+class TestPacker( unittest.TestCase ):
+    folder = op.join(BASEDIR, 'compass')
+
+    def test_pack(self):
+        file = op.join(self.folder, 'main.scss')
+        Packer(file, FakeArgs()).pack()
+        test = open(op.join(self.folder, '_main.scss')).read()
+        orig = open(op.join(self.folder, '_main.scss.orig')).read()
         self.assertEqual(test, orig)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+from os import path as op, walk
 from sys import version_info
 
 from setuptools import setup, find_packages
@@ -9,17 +9,18 @@ from zetalibrary import VERSION, PROJECT, LICENSE
 
 def read( fname ):
     try:
-        return open( os.path.join( os.path.dirname( __file__ ), fname ) ).read()
+        return open(op.join(op.dirname( __file__ ), fname)).read()
     except IOError:
         return ''
 
-PACKAGE_DATA = []
 
-for root, dirs, files in os.walk( os.path.join( PROJECT, 'zetalib' ) ):
+PACKAGE_DATA = []
+for root, dirs, files in walk(op.join(PROJECT, 'libs')):
     for filename in files:
         PACKAGE_DATA.append("%s/%s" % ( root[len(PROJECT)+1:], filename ))
 
-install_requires = [ 'scss' ]
+
+install_requires = ['pyscss', 'cssmin', 'jsmin']
 if version_info < (2, 7):
     install_requires.append('argparse')
 
@@ -51,7 +52,7 @@ META_DATA = dict(
 
     entry_points={
         'console_scripts': [
-            'zeta = zetalibrary.main:main',
+            'zeta = zetalibrary.main:console',
         ]
     },
 

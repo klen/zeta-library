@@ -3,12 +3,12 @@ import unittest
 
 def all_tests_suite():
     return unittest.TestLoader().loadTestsFromNames([
-        'zetalibrary.tests.main',
+        'zetalibrary.tests.new',
         'zetalibrary.tests.zeta',
-        'zetalibrary.tests.boilerplate',
         'zetalibrary.tests.compass',
-        'zetalibrary.tests.jquery',
-        'zetalibrary.tests.blueprint',
+        # 'zetalibrary.tests.boilerplate',
+        # 'zetalibrary.tests.jquery',
+        # 'zetalibrary.tests.blueprint',
     ])
 
 
@@ -23,4 +23,3 @@ if __name__ == '__main__':
     import sys
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     main()
-

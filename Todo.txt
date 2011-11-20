@@ -1,3 +1,7 @@
+Cofee-script
+Less
+Add custom lib dir
+
 Add scss options
 Add scss path support
 Add watch mode
