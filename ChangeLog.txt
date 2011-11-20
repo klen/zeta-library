@@ -1,3 +1,10 @@
+## 2011-11-21 0.5.0
+-------------------
+* Update all libs
+* Upgrade watch mode
+* Add -d option ($ZETA_LIBDIR) for support custom 'zeta://' paths
+* Migrate from python-scss to pyscss
+
 ## 2011-10-30 0.4.24
 --------------------
 * Migrate to jquery 1.6.4

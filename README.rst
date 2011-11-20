@@ -78,7 +78,23 @@ Usage
 
 $zeta ::
 
-    $ zeta --help
+    $ zeta help
+
+    usage: zeta [-h] [-v] {pack,watch,shell,libs} ...
+
+    positional arguments:
+    {pack,watch,shell,libs}
+        pack                Parse file or dir, import css, js code and save with
+                            prefix
+        watch               Watch directory for changes and auto pack sources
+        shell               A helper command to be used for shell integration
+        libs                Show zeta libs
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -v, --version         show program's version number and exit
+
+    $ zeta pack --help
 
     usage: zeta [-h] [-p PREFIX] [-f FORMAT] [-c] [-d DIRECTORY] source
 
@@ -99,45 +115,11 @@ $zeta ::
                             Add custom directory for search with prefix: 'zeta://'
 
 
-Frameworks
-===========
-$zeta -s . ::
-
-    zeta.css 
-    Zeta is a static framework.
-
-    zeta.js 
-    Part of zeta framework. Include jQuery.
-
-    boilerplate.css 0.9.5
-    HTML5 Boilerplate is the professional badass's base HTML/CSS/JS template for a fast, robust and future-proof site. See http://html5boilerplate.com/
-
-    compass.css 
-    Compass is a stylesheet authoring framework. See: http://compass-style.org/ 
-
-    blueprint.css 1.0
-    Blueprint is a CSS framework. See: http://www.blueprintcss.org/ 
-
-    jquery.js 1.6.2
-    jQuery is a fast and concise JavaScript Library. See http://jquery.com
-
-
-Zeta blocks
-============
-$ zeta -z . ::
-
-    z-base
-    z-print
-    z-grid
-    z-typography
-    z-placeholder
-    z-reset
-
 
 Changes
 =======
 
-Make sure you`ve read the following document if you are upgrading from previous versions of makesite:
+Make sure you`ve read the following document if you are upgrading from previous versions of zetalibrary:
 
 http://packages.python.org/zetalibrary/changes.html
 
@@ -164,9 +146,13 @@ Examples
     -rw-r--r-- 1 www-data www-data    0 2011-02-16 15:09 _print.css
 
 
-#. Parse /static/main.js ::
+#. Parse `/static/main.js` and minify ::
 
-    $> zeta /static/main.js
+    $ zeta -c /static/main.js
+
+#. Watch directory `/static/` ::
+    
+    $ zeta watch /static
 
 
 Options
@@ -225,5 +211,4 @@ Note
 .. _SCSS: http://sass-lang.com
 .. _compass: http://compass-style.org/
 .. _jQuery: http://jquery.com
-.. _python-scss: http://packages.python.org/scss/
 .. _klen: https://klen.github.com

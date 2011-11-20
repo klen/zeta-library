@@ -12,10 +12,9 @@
 // ==========
 // From: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/main.js'
 // Zeta import: 'zeta:///zeta.js'
-/* 
-Part of zeta framework. Include jQuery.
-
- */
+/* Zeta is a static framework.
+Version 0.1
+https://github.com/klen/zeta-libs */
 
 
 (function($){
