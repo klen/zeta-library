@@ -1,20 +1,12 @@
 #!/usr/bin/env python
-import os.path
+# coding: utf-8
 
-version_info = (0, 4, 24)
+from .settings import VERSION
 
-__version__ = VERSION = '.'.join(map(str, version_info))
+
+version_info = VERSION.split('.')
+
+__version__ = VERSION
 __project__ = PROJECT = __name__
 __author__ = AUTHOR = "Kirill Klenov <horneds@gmail.com>"
 __license__ = LICENSE = "GNU LGPL"
-
-ZETALIBDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zetalib')
-
-
-class ZetaError( Exception ):
-    """ Zeta error.
-    """
-    def __init__( self, message, linker=None ):
-        if linker and len(linker.tree):
-            message = "%s: %s" % (linker.tree[-1]['current'], message)
-        super( ZetaError, self ).__init__( message )
