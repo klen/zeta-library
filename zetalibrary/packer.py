@@ -51,9 +51,9 @@ class Packer(object):
         try:
             src, imports = parser.parse_path(path)
             for f in filter(lambda x: not x in self.imports,
-                        map(lambda x: op.relpath(op.join(curdir, x)),
+                        map(lambda x: op.abspath(op.relpath(op.join(curdir, x))),
                             map(lambda x: self.parse_path(x, curdir), imports))):
-                result = result + self.parse(op.abspath(f), parent=path)
+                result = result + self.parse(f, parent=path)
 
             result.append((path, parent, parser, src))
         except IOError, e:
@@ -80,14 +80,16 @@ class Packer(object):
 
         yield '\n'
 
-    @staticmethod
-    def parse_path(path, curdir):
+    def parse_path(self, path, curdir):
         " Normilize path. "
         if path.startswith('http://'):
             return path
 
         elif path.startswith('zeta://'):
-            return op.join(LIBDIR, path[len('zeta://'):])
+            zpath = op.join(LIBDIR, path[len('zeta://'):])
+            if self.args.directory and not op.exists(zpath):
+                return op.join(self.args.directory, path[len('zeta://'):])
+            return zpath
 
         return op.abspath(op.normpath(op.join(curdir, path)))
 

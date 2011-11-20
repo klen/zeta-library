@@ -1,0 +1,3 @@
+function fake () {
+    return null;
+}

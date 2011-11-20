@@ -3,12 +3,9 @@ import unittest
 
 def all_tests_suite():
     return unittest.TestLoader().loadTestsFromNames([
-        'zetalibrary.tests.new',
+        'zetalibrary.tests.common',
         'zetalibrary.tests.zeta',
-        'zetalibrary.tests.compass',
-        # 'zetalibrary.tests.boilerplate',
-        # 'zetalibrary.tests.jquery',
-        # 'zetalibrary.tests.blueprint',
+        'zetalibrary.tests.libs',
     ])
 
 

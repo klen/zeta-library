@@ -1,0 +1,1 @@
+require('zeta://fake.js');

@@ -8,44 +8,59 @@ Zeta library
 
 Features
 ========
+
+- Collect **JS** files;
+- Collect **CSS** and **SCSS** files in any order;
+- Compress output files;
+- Parse custom files in support formats;
+- Watch files or folders and auto repack static;
+- Has included popular js and css frameworks (you can expand);
+- And more...
+
+
 * **CSS import support**::
 
     @import url(path or http);
+
 
 * **JS require support**::
 
     require("path or http");
 
+
 * **SCSS compile and imports support** See SCSS_ for more information about language::
 
     @import url(path or http);
 
-* **Compass blueprint scss, css framework** Ex. ::
+    // or Scss style also supported
 
-    @import url( zeta://blueprint.css );
-    /* Or */
-    @import url( zeta://blueprint/typography.scss );
+    @import 'compass/css3'
 
 
-* **Partial compass framework support** Ex. ::
+* **Blueprint css framework** Ex. ::
 
-    @import url( zeta://compass/reset.scss );
+    @import url(zeta://blueprint.css);
+
+
+* **Compass scss framework** Ex. ::
+
+    @import url(zeta://compass.scss);
+
+    // or 
+
+    @import 'compass/reset'
+
 
 * **Boilerrplate framework support** Ex. ::
 
-    @import url( zeta://boilerplate.css );
+    @import url(zeta://boilerplate.css);
+
 
 * **Zeta css, js framework** Ex: ::
 
-    @import url( zeta://zeta.css );
+    @import url(zeta://zeta.css);
 
-    require( "zeta://zeta.js" );
-
-
-Requirements
-=============
-- python >= 2.5
-- python-scss_ >= 6.2
+    require("zeta://zeta.js");
 
 
 Installation
@@ -65,25 +80,23 @@ $zeta ::
 
     $ zeta --help
 
-    usage: zeta [-h] [-p PREFIX] [-f FORMAT] [-n] [-w] [-s] [-z] source
+    usage: zeta [-h] [-p PREFIX] [-f FORMAT] [-c] [-d DIRECTORY] source
 
     Parse file or dir, import css, js code and save with prefix.
 
     positional arguments:
-    source                filename or dirname
+    source                Path to file or directory
 
     optional arguments:
     -h, --help            show this help message and exit
     -p PREFIX, --prefix PREFIX
-                            Save result with prefix. Default is '_'.
+                            Save packed files with prefix. Default is '_'.
     -f FORMAT, --format FORMAT
-                            Force use this format.
-    -n, --no-comments     Clear comments.
-    -w, --watch           Watch directory of file and recompile source if it
-                            edited.
-    -s, --show-frameworks
-                            Show available frameworks.
-    -z, --show-blocks     Show available zeta blocks.
+                            Force format (css, js, ...). By default format parse
+                            from file extension.
+    -c, --compress        Compress packed sources
+    -d DIRECTORY, --directory DIRECTORY
+                            Add custom directory for search with prefix: 'zeta://'
 
 
 Frameworks
@@ -172,7 +185,7 @@ at https://github.com/klen/zeta-library/issues
 Contributing
 ============
 
-Development of python-scss happens at github: https://github.com/klen/zeta-library
+Development of zeta-library happens at github: https://github.com/klen/zeta-library
 
 * klen_ (Kirill Klenov)
 

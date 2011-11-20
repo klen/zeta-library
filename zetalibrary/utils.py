@@ -1,14 +1,8 @@
-from os import path as op, stat, walk, listdir
+from os import path as op, listdir
+
+from watchdog.tricks import Trick
 
 from zetalibrary.settings import COLORS, FORMATS, LIBDIR
-
-
-class ZetaError(Exception):
-    " Zeta-library error "
-    def __init__(self, message, packer=None):
-        if packer and packer.tree:
-            message = "%s: %s" % (packer.tree[-1][1], message)
-        super(ZetaError, self).__init__(message)
 
 
 def color_msg(msg, color):
@@ -35,35 +29,42 @@ def gen_files(path, prefix="_"):
 
 
 def gen_frameworks():
-    for fname in listdir(LIBDIR):
+    for fname in sorted(listdir(LIBDIR)):
+        name, ext = op.splitext(fname)
         fpath = op.join(LIBDIR, fname)
-        if op.isfile(fpath):
-            description, version = open(fpath).readlines()[1:3]
-            yield (fname, version, description)
+        if not name.startswith('_') and op.isfile(fpath) and ext.strip('.') in ['css', 'js', 'scss']:
+            description, url, version = open(fpath).readlines()[0:3]
+            yield (fname, description, version, url)
 
 
+def pack(args):
+    from zetalibrary.packer import Packer
+    for path in gen_files(args.source, prefix=args.prefix):
+        Packer(path, args).pack()
 
 
+class ZetaTrick(Trick):
+    " Zeta directory event handler "
 
-LAST_MTIME = 0
+    def __init__(self, args=None):
+        self.args = args
+        self.formats = ['css', 'js', 'scss', args.format]
+        super(ZetaTrick, self).__init__()
+
+    def dispatch(self, event):
+        name = op.basename(event.src_path)
+        _, ext = op.splitext(name)
+        if (not name.startswith(self.args.prefix)
+                and not event.is_directory
+                and ext.lstrip('.').lower() in self.formats):
+            super(ZetaTrick, self).dispatch(event)
 
 
-def files_changed(path, prefix):
-    " Return True if the files have changed since the last check "
-    def file_times(path):
-        " Return the last time files have been modified "
-        if op.isdir(path):
-            for root, dirs, files in walk(path):
-                dirs[:] = [x for x in dirs if x[0] != '.']
-                for f in files:
-                    if not f.startswith(prefix):
-                        yield stat(op.join(root, f)).st_mtime
-        else:
-            yield stat(path).st_mtime
+    def on_any_event(self, event):
+        print "\nChanges found: %s" % event.src_path
+        pack(self.args)
 
-    global LAST_MTIME
-    mtime = max(file_times(path))
-    if mtime > LAST_MTIME:
-        LAST_MTIME = mtime
-        return True
-    return False
+
+class ZetaError(Exception):
+    " Zeta-library error "
+    pass

@@ -1,0 +1,7 @@
+@import url("zeta://compass.scss");
+@import "compass/reset";
+
+.test {
+    color: blue;
+    @include linear-gradient(color_stops(white,black));
+}

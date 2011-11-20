@@ -1,0 +1,7 @@
+@import url(options.scss);
+
+.sass {
+    $test: 1px;
+    border: $test + 2;
+    color: $red;
+}

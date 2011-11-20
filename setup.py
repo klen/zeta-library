@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from os import path as op, walk
-from sys import version_info
 
 from setuptools import setup, find_packages
 
@@ -14,15 +13,14 @@ def read( fname ):
         return ''
 
 
-PACKAGE_DATA = []
+PACKAGE_DATA = ['shell.sh']
 for root, dirs, files in walk(op.join(PROJECT, 'libs')):
     for filename in files:
         PACKAGE_DATA.append("%s/%s" % ( root[len(PROJECT)+1:], filename ))
 
 
-install_requires = ['pyscss', 'cssmin', 'jsmin']
-if version_info < (2, 7):
-    install_requires.append('argparse')
+# install_requires = ['pyscss', 'cssmin', 'jsmin', 'watchdog', 'argh'   ]
+install_requires = []
 
 META_DATA = dict(
     name=PROJECT,
@@ -52,7 +50,7 @@ META_DATA = dict(
 
     entry_points={
         'console_scripts': [
-            'zeta = zetalibrary.main:console',
+            'zeta = zetalibrary.main:main',
         ]
     },
 

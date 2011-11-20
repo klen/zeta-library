@@ -1,0 +1,6 @@
+@import url("blocks/block.css");
+@import url("blocks/sass.scss");
+
+.body {
+    border-collapse: collapse;
+}
