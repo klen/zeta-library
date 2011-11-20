@@ -9,7 +9,7 @@ install: remove _install clean
 register: _register clean
 
 remove:
-	sudo pip uninstall $(MODULE)
+	sudo pip uninstall $(MODULE) -y
 
 upload: _upload install _commit doc
 
