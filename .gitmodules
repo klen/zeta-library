@@ -1,0 +1,3 @@
+[submodule "zetalibrary/libs"]
+	path = zetalibrary/libs
+	url = git://github.com/klen/zeta-libs.git
