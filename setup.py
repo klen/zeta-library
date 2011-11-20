@@ -19,8 +19,7 @@ for root, dirs, files in walk(op.join(PROJECT, 'libs')):
         PACKAGE_DATA.append("%s/%s" % ( root[len(PROJECT)+1:], filename ))
 
 
-# install_requires = ['pyscss', 'cssmin', 'jsmin', 'watchdog', 'argh'   ]
-install_requires = []
+install_requires = ['pyscss', 'cssmin', 'jsmin', 'watchdog', 'argh'   ]
 
 META_DATA = dict(
     name=PROJECT,
