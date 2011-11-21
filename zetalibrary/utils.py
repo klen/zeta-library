@@ -2,7 +2,8 @@ from os import path as op, listdir
 
 from watchdog.tricks import Trick
 
-from zetalibrary.settings import COLORS, FORMATS, LIBDIR
+from zetalibrary.settings import COLORS, FORMATS, LIBDIR, CURRENT_CONFIG
+from configparser import ConfigParser
 
 
 def color_msg(msg, color):
@@ -39,8 +40,19 @@ def gen_frameworks():
 
 def pack(args):
     from zetalibrary.packer import Packer
+    args = parse_config(args)
     for path in gen_files(args.source, prefix=args.prefix):
         Packer(path, args).pack()
+
+
+def parse_config(args):
+    parser = ConfigParser()
+    parser.add_section('Zeta')
+    parser.read([CURRENT_CONFIG, args.setup_file or ''])
+    options = parser._sections['Zeta']
+    options.update(args.__dict__)
+    args.__dict__ = options
+    return args
 
 
 class ZetaTrick(Trick):

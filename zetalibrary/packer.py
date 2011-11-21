@@ -28,7 +28,7 @@ class Packer(object):
 
         out = "".join(self.merge(self.parse(self.path)))
         pack_name = self.args.prefix + op.basename(self.path)
-        pack_path = op.join(self.basedir, pack_name)
+        pack_path = op.join(self.args.output or self.basedir, pack_name)
         try:
             open(pack_path, 'w').write(out)
             self.out("Linked file saved as: '%s'." % pack_path)

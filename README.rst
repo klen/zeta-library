@@ -96,23 +96,29 @@ $zeta ::
 
     $ zeta pack --help
 
-    usage: zeta [-h] [-p PREFIX] [-f FORMAT] [-c] [-d DIRECTORY] source
-
-    Parse file or dir, import css, js code and save with prefix.
+    usage: zeta pack [-h] [-p PREFIX] [-f FORMAT] [-c] [-d DIRECTORY] [-o OUTPUT]
+                    [-s SETUP_FILE]
+                    source
 
     positional arguments:
-    source                Path to file or directory
+    source
 
     optional arguments:
     -h, --help            show this help message and exit
     -p PREFIX, --prefix PREFIX
-                            Save packed files with prefix. Default is '_'.
+                            Save packed files with prefix. Default is '_'
     -f FORMAT, --format FORMAT
                             Force format (css, js, ...). By default format parse
-                            from file extension.
+                            from file extension
     -c, --compress        Compress packed sources
     -d DIRECTORY, --directory DIRECTORY
                             Add custom directory for search with prefix: 'zeta://'
+                            By default $ZETA_LIBDIR
+    -o OUTPUT, --output OUTPUT
+                            Set output directory path
+    -s SETUP_FILE, --setup-file SETUP_FILE
+                            Configuration ini file, with 'Zeta' section
+
 
 
 

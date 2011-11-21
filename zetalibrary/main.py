@@ -36,6 +36,8 @@ def libs():
 @arg('-f', '--format', help="Force format (css, js, ...). By default format parse from file extension")
 @arg('-c', '--compress', default=False, help="Compress packed sources")
 @arg('-d', '--directory', default=CUSTOMDIR, help="Add custom directory for search with prefix: 'zeta://' By default $ZETA_LIBDIR")
+@arg('-o', '--output', help="Set output directory path.")
+@arg('-s', '--setup-file', help="Configuration ini file")
 @wrap_errors(Exception)
 def watch(args):
     " Watch directory for changes and auto pack sources "
@@ -61,6 +63,8 @@ def watch(args):
 @arg('-f', '--format', help="Force format (css, js, ...). By default format parse from file extension")
 @arg('-c', '--compress', default=False, help="Compress packed sources")
 @arg('-d', '--directory', default=CUSTOMDIR, help="Add custom directory for search with prefix: 'zeta://' By default $ZETA_LIBDIR")
+@arg('-o', '--output', help="Set output directory path")
+@arg('-s', '--setup-file', help="Configuration ini file")
 @wrap_errors(Exception)
 def pack(args):
     " Parse file or dir, import css, js code and save with prefix "

@@ -23,19 +23,24 @@ class TestPacker(unittest.TestCase):
     def test_custom_libs(self):
         js_file = op.join(BASEDIR, 'custom', 'custom.js')
         Packer(js_file, FakeArgs(
-            directory=op.join(BASEDIR, 'custom'))).pack()
+            directory=op.join(BASEDIR, 'custom'),
+            )).pack()
         self.assertTrue(
                 'fake' in open(op.join(BASEDIR, 'custom', '_custom.js')).read())
 
     def test_pack(self):
         css_file = op.join(self.folder, 'main.css')
-        Packer(css_file, FakeArgs(compress=True)).pack()
+        Packer(css_file, FakeArgs(
+            output=op.join(BASEDIR, 'common', 'output'),
+            compress=True)).pack()
         orig = open(op.join(self.folder, '_main.css.orig')).read()
-        test = open(op.join(self.folder, '_main.css')).read()
+        test = open(op.join(self.folder, 'output/_main.css')).read()
         self.assertEqual(test, orig)
 
         js_file = op.join(self.folder, 'main.js')
-        Packer(js_file, FakeArgs(compress=True)).pack()
+        Packer(js_file, FakeArgs(
+            output=op.join(BASEDIR, 'common', 'output'),
+            compress=True)).pack()
         orig = open(op.join(self.folder, '_main.js.orig')).read()
-        test = open(op.join(self.folder, '_main.js')).read()
+        test = open(op.join(self.folder, 'output/_main.js')).read()
         self.assertEqual(test, orig)
