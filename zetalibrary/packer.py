@@ -21,14 +21,17 @@ class Packer(object):
 
     def pack(self):
         " Pack and save file "
+        pack_name = self.args.prefix + op.basename(self.path)
+        pack_path = op.join(self.args.output or self.basedir, pack_name)
+
         self.out("Packing: %s" % self.path)
+        self.out("Output: %s" % pack_path)
+
         if self.args.format:
             ext = self.get_ext(self.path)
             self.parsers[ext] = self.args.format
 
         out = "".join(self.merge(self.parse(self.path)))
-        pack_name = self.args.prefix + op.basename(self.path)
-        pack_path = op.join(self.args.output or self.basedir, pack_name)
         try:
             open(pack_path, 'w').write(out)
             self.out("Linked file saved as: '%s'." % pack_path)

@@ -7,6 +7,7 @@ LIBDIR  = op.join(BASEDIR, 'libs')
 CUSTOMDIR = environ.get('ZETA_LIBDIR', None)
 FORMATS = ['css', 'scss', 'js']
 CURRENT_CONFIG = op.join(getcwd(), "zeta.ini")
+HOME_CONFIG = op.join(environ.get('HOME', ''), "zeta.ini")
 COLORS = dict(
     okgreen = '\033[92m',
     warning = '\033[93m',

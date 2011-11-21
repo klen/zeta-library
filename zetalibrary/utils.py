@@ -2,7 +2,7 @@ from os import path as op, listdir
 
 from watchdog.tricks import Trick
 
-from zetalibrary.settings import COLORS, FORMATS, LIBDIR, CURRENT_CONFIG
+from zetalibrary.settings import COLORS, FORMATS, LIBDIR, CURRENT_CONFIG, HOME_CONFIG
 from ConfigParser import ConfigParser
 
 
@@ -48,10 +48,10 @@ def pack(args):
 def parse_config(args):
     parser = ConfigParser()
     parser.add_section('Zeta')
-    parser.read([CURRENT_CONFIG, args.setup_file or ''])
-    options = parser._sections['Zeta']
-    options.update(args.__dict__)
-    args.__dict__ = options
+    parser.read([CURRENT_CONFIG, HOME_CONFIG, args.setup_file or ''])
+    for k,v in parser._sections['Zeta'].iteritems():
+        if getattr(args, k, None) is None:
+            setattr(args, k, v)
     return args
 
 
