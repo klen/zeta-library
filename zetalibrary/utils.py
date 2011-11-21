@@ -3,7 +3,7 @@ from os import path as op, listdir
 from watchdog.tricks import Trick
 
 from zetalibrary.settings import COLORS, FORMATS, LIBDIR, CURRENT_CONFIG
-from configparser import ConfigParser
+from ConfigParser import ConfigParser
 
 
 def color_msg(msg, color):
