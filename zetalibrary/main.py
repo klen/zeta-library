@@ -76,7 +76,8 @@ def main():
     commands = pack, watch, shell, libs
     names = [f.__name__ for f in commands] + [ 'help' ]
 
-    parser = ArghParser(version=VERSION)
+    parser = ArghParser()
+    parser.add_argument('-v', '--version', action='version', version=VERSION, help='Show zeta version')
     parser.add_commands(commands)
     argv = sys.argv[1:]
     if argv and not argv[0] in names:
