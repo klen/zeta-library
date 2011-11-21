@@ -80,7 +80,7 @@ def main():
     parser.add_argument('-v', '--version', action='version', version=VERSION, help='Show zeta version')
     parser.add_commands(commands)
     argv = sys.argv[1:]
-    if argv and not argv[0] in names:
+    if argv and not argv[0] in names and not argv[0] in ['-v', '--version']:
         argv.insert(0, 'pack')
     parser.dispatch(argv)
 
