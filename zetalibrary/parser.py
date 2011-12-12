@@ -2,11 +2,12 @@ import re
 import urllib2
 from os import path as op
 
+import scss
 from cssmin import cssmin
 from jsmin import jsmin
-import scss
 
 from zetalibrary.settings import LIBDIR
+
 
 scss.LOAD_PATHS = LIBDIR
 
@@ -69,7 +70,7 @@ class CSSParser(Parser):
                 url = "url(%s)" % op.relpath(op.join(op.dirname(path), link_path), self.basedir)
                 url = url.replace("\\", "/")
                 return url
-            except OSError:
+            except (OSError, AttributeError):
                 return "url(%s)" % link_path
 
         src = self.link_re.sub(links, src)
@@ -86,7 +87,7 @@ class SCSSParser(CSSParser):
         self.parser._scss_opts['compress'] = self.compress
 
     def parse_src(self, src, path=None):
-        src = super(SCSSParser, self).parse_src(src)
+        src = super(SCSSParser, self).parse_src(src, path=path)
         self.parser._scss_files[path] = self.parser.parse_scss_string(path, src, path)
         self.parser.parse_children()
         self.parser.parse_extends()
