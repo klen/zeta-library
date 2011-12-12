@@ -87,7 +87,7 @@ class SCSSParser(CSSParser):
 
     def parse_src(self, src, path=None):
         src = super(SCSSParser, self).parse_src(src)
-        self.parser._scss_files[path] = self.parser.parse_scss_string(path, src)
+        self.parser._scss_files[path] = self.parser.parse_scss_string(path, src, path)
         self.parser.parse_children()
         self.parser.parse_extends()
         self.parser.manage_order()
