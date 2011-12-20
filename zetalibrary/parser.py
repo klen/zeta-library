@@ -83,19 +83,29 @@ class SCSSParser(CSSParser):
 
     def __init__(self, *args, **kwargs):
         super(SCSSParser, self).__init__(*args, **kwargs)
-        self.parser = scss.Scss()
-        self.parser._scss_opts['compress'] = self.compress
+        self.parser = scss.Scss(scss_opts=dict(compress=self.compress))
 
-    def parse_src(self, src, path=None):
-        src = super(SCSSParser, self).parse_src(src, path=path)
-        self.parser._scss_files[path] = self.parser.parse_scss_string(path, src, path)
+    def parse_src(self, codesrc, path=None):
+        codesrc = super(SCSSParser, self).parse_src(codesrc, path=path)
+
+        codesrc = self.parser.load_string(codesrc.strip(), path)
+        self.parser._scss_files[path] = str
+        self.parser.children.append(
+            scss.spawn_rule(
+                fileid=path,
+                codestr=codesrc,
+                context=self.parser._scss_vars,
+                options=self.parser._scss_opts,
+                index=self.parser._scss_index
+            ))
         self.parser.parse_children()
         self.parser.parse_extends()
         self.parser.manage_order()
         self.parser.parse_properties()
-        src = self.parser.create_css(path)
-        src = self.parser.post_process(src)
-        return src.strip()
+        codesrc = self.parser.create_css(path)
+        codesrc = self.parser.post_process(codesrc)
+
+        return codesrc.strip()
 
 
 class JSParser(Parser):

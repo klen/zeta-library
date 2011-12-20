@@ -47,6 +47,7 @@ elements-of-type(html5-block) {
   color: #0000ff;
   background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0,
     #ffffff), color-stop(1, #000000));
+  background-image: -webkit-linear-gradient(center top, #ffffff 0, #000000 1);
   background-image: -moz-linear-gradient(center top, #ffffff 0, #000000 1);
   background-image: -o-linear-gradient(center top, #ffffff 0, #000000 1);
   background-image: -ms-linear-gradient(center top, #ffffff 0, #000000 1);
