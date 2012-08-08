@@ -114,7 +114,7 @@ class SCSSParser(CSSParser):
 
 class JSParser(Parser):
     import_re = re.compile(
-        r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\s*\)\s*;?\s*$', re.MULTILINE)
+            r'^(?:require|include)\(\s*[\'\"]([^\'\"]+)[\'\"]\s*\)\s*;?\s*$', re.MULTILINE)
     comment_re = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/')
     comment_template = '// %s\n'
 
