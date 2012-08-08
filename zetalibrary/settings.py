@@ -1,7 +1,7 @@
 from os import path as op, environ, getcwd
 
 
-VERSION = '0.5.91'
+VERSION = '0.5.92'
 BASEDIR = op.abspath(op.dirname(__file__))
 LIBDIR  = op.join(BASEDIR, 'libs')
 CUSTOMDIR = environ.get('ZETA_LIBDIR', None)

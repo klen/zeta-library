@@ -39,7 +39,9 @@ def gen_frameworks():
 
 
 def pack(args):
+    " Pack files. "
     from zetalibrary.packer import Packer
+
     args = parse_config(args)
     for path in gen_files(args.source, prefix=args.prefix):
         Packer(path, args).pack()
@@ -49,7 +51,7 @@ def parse_config(args):
     parser = ConfigParser()
     parser.add_section('Zeta')
     parser.read([CURRENT_CONFIG, HOME_CONFIG, args.setup_file or ''])
-    for k,v in parser._sections['Zeta'].iteritems():
+    for k, v in parser._sections['Zeta'].iteritems():
         if getattr(args, k, None) is None:
             setattr(args, k, v)
     return args
@@ -70,7 +72,6 @@ class ZetaTrick(Trick):
                 and not event.is_directory
                 and ext.lstrip('.').lower() in self.formats):
             super(ZetaTrick, self).dispatch(event)
-
 
     def on_any_event(self, event):
         print "\nChanges found: %s" % event.src_path

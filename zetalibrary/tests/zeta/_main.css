@@ -1,6 +1,6 @@
 /* ========== */
-/* From: 'zeta:///zeta.css' */
-/* Zeta import: 'zeta:///zeta/z-reset/z-reset.css' */
+/* From: 'zeta://zeta.css' */
+/* Zeta import: 'zeta://zeta/z-reset/z-reset.css' */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -51,8 +51,8 @@ table {
 }
 
 /* ========== */
-/* From: 'zeta:///zeta.css' */
-/* Zeta import: 'zeta:///zeta/z-base/z-base.scss' */
+/* From: 'zeta://zeta.css' */
+/* Zeta import: 'zeta://zeta/z-base/z-base.scss' */
 body {
   *font-size: small;
   font: 10.561px sans-serif;
@@ -165,8 +165,8 @@ button {
 }
 
 /* ========== */
-/* From: 'zeta:///zeta.css' */
-/* Zeta import: 'zeta:///zeta/z-typography/z-typography.css' */
+/* From: 'zeta://zeta.css' */
+/* Zeta import: 'zeta://zeta/z-typography/z-typography.css' */
 h1 {
 	font-size: 3em;
 	line-height: 1;
@@ -223,8 +223,8 @@ address {
 	margin: 0 0 1.5em}
 
 /* ========== */
-/* From: 'zeta:///zeta.css' */
-/* Zeta import: 'zeta:///zeta/z-grid/z-grid.scss' */
+/* From: 'zeta://zeta.css' */
+/* Zeta import: 'zeta://zeta/z-grid/z-grid.scss' */
 .z-grid-1 {
   width: 60px;
 }
@@ -281,15 +281,15 @@ address {
 }
 
 /* ========== */
-/* From: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/main.css' */
-/* Zeta import: 'zeta:///zeta.css' */
+/* From: '.' */
+/* Zeta import: 'zeta://zeta.css' */
 /* Zeta is a static framework.
 Version 0.1
 https://github.com/klen/zeta-libs */
 
 /* ========== */
-/* From: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/main.css' */
-/* Zeta import: '/home/klen/Projects/zeta-library/zetalibrary/tests/zeta/test_helpers.scss' */
+/* From: '.' */
+/* Zeta import: '../test_helpers.scss' */
 .test {
   overflow: hidden;
   zoom: 1;

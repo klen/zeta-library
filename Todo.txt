@@ -1,5 +1,0 @@
-- Add css formating http://habrahabr.ru/blogs/css/112827/
-- Lesscss git://github.com/generalov/lesscss-python.git
-- CleverCss
-Create custom zeta format file with css and js blocks
-Refactor zeta js blocks

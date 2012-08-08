@@ -1,6 +1,6 @@
 /* ========== */
-/* From: 'zeta:///blueprint.css' */
-/* Zeta import: 'zeta:///blueprint/reset.css' */
+/* From: 'zeta://blueprint.css' */
+/* Zeta import: 'zeta://blueprint/reset.css' */
 /* --------------------------------------------------------------
 
    reset.css
@@ -68,8 +68,8 @@ a img { border: none; }
 :focus { outline: 0; }
 
 /* ========== */
-/* From: 'zeta:///blueprint.css' */
-/* Zeta import: 'zeta:///blueprint/typography.css' */
+/* From: 'zeta://blueprint.css' */
+/* Zeta import: 'zeta://blueprint/typography.css' */
 /* --------------------------------------------------------------
 
    typography.css
@@ -195,8 +195,8 @@ caption     { background: #eee; }
 .bottom    { margin-bottom:0; padding-bottom:0; }
 
 /* ========== */
-/* From: 'zeta:///blueprint.css' */
-/* Zeta import: 'zeta:///blueprint/forms.css' */
+/* From: 'zeta://blueprint.css' */
+/* Zeta import: 'zeta://blueprint/forms.css' */
 /* --------------------------------------------------------------
 
    forms.css
@@ -281,8 +281,8 @@ form.inline p { margin-bottom:0; }
 .info a            { color: #205791; }
 
 /* ========== */
-/* From: 'zeta:///blueprint.css' */
-/* Zeta import: 'zeta:///blueprint/grid.css' */
+/* From: 'zeta://blueprint.css' */
+/* Zeta import: 'zeta://blueprint/grid.css' */
 /* --------------------------------------------------------------
 
    grid.css
@@ -565,8 +565,8 @@ hr.space {
 .clear { clear:both; }
 
 /* ========== */
-/* From: '/home/klen/Projects/zeta-library/zetalibrary/tests/libs/blueprint.css' */
-/* Zeta import: 'zeta:///blueprint.css' */
+/* From: '.' */
+/* Zeta import: 'zeta://blueprint.css' */
 /* Blueprint is a CSS framework */
 /* http://www.blueprintcss.org/ */
 /* Version 1.0 */
