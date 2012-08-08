@@ -14,9 +14,9 @@ class Packer(object):
         self.args = args
         self.imports = set()
         self.parsers = dict(
-            css = CSSParser(self.basedir, compress=self.args.compress),
-            scss = SCSSParser(self.basedir, compress=self.args.compress),
-            js = JSParser(self.basedir, compress=self.args.compress),
+            css=CSSParser(self.basedir, compress=self.args.compress),
+            scss=SCSSParser(self.basedir, compress=self.args.compress),
+            js=JSParser(self.basedir, compress=self.args.compress),
         )
 
     def pack(self):
@@ -54,7 +54,9 @@ class Packer(object):
         try:
             src, imports = parser.parse_path(path)
             for f in filter(lambda x: not x in self.imports,
-                        map(lambda x: op.abspath(op.relpath(op.join(curdir, x))),
+                            map(
+                            lambda x: op.abspath(
+                                op.relpath(op.join(curdir, x))),
                             map(lambda x: self.parse_path(x, curdir), imports))):
                 result = result + self.parse(f, parent=path)
 
@@ -74,8 +76,10 @@ class Packer(object):
             if not self.args.compress:
                 yield parser.comment_template % ("=" * 10)
                 if parent:
-                    yield parser.comment_template % "From: '%s'" % parent.replace(LIBDIR, 'zeta://')
-                yield parser.comment_template % "Zeta import: '%s'" % path.replace(LIBDIR, 'zeta://')
+                    from_path = parent.replace(LIBDIR, 'zeta:/') if parent.startswith(LIBDIR) else op.relpath(parent, self.path)
+                    yield parser.comment_template % "From: '%s'" % from_path
+                target_path = path.replace(LIBDIR, 'zeta:/') if path.startswith(LIBDIR) else op.relpath(path, self.path)
+                yield parser.comment_template % "Zeta import: '%s'" % target_path
                 yield src
                 yield '\n\n'
             else:

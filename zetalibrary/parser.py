@@ -2,7 +2,7 @@ import re
 import urllib2
 from os import path as op
 
-import scss
+from zetalibrary import scss
 from cssmin import cssmin
 from jsmin import jsmin
 
@@ -10,6 +10,7 @@ from zetalibrary.settings import LIBDIR
 
 
 scss.LOAD_PATHS = LIBDIR
+
 
 class Parser(object):
 
@@ -42,6 +43,7 @@ class Parser(object):
     def parse_imports(self, src):
         " Parse imports from source. "
         result = []
+
         def child(obj):
             result.append(obj.group(1))
         src = self.import_re.sub(child, src)
@@ -61,13 +63,15 @@ class CSSParser(Parser):
 
     def parse_src(self, src, path=None):
         src = super(CSSParser, self).parse_src(src)
+
         def links(obj):
             link_path = obj.group(1)
             for ignore in ('data:image', 'http://', 'https://'):
                 if link_path.startswith(ignore):
                     return "url(%s)" % link_path
             try:
-                url = "url(%s)" % op.relpath(op.join(op.dirname(path), link_path), self.basedir)
+                url = "url(%s)" % op.relpath(
+                    op.join(op.dirname(path), link_path), self.basedir)
                 url = url.replace("\\", "/")
                 return url
             except (OSError, AttributeError):
@@ -109,7 +113,8 @@ class SCSSParser(CSSParser):
 
 
 class JSParser(Parser):
-    import_re = re.compile(r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\s*\)\s*;?\s*$', re.MULTILINE)
+    import_re = re.compile(
+        r'^require\(\s*[\'\"]([^\'\"]+)[\'\"]\s*\)\s*;?\s*$', re.MULTILINE)
     comment_re = re.compile(r'/\*(?:[^*]|\*+[^*/])*\*+/')
     comment_template = '// %s\n'
 
