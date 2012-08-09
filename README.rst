@@ -23,9 +23,10 @@ Features
     @import url(path or http);
 
 
-* **JS require support**::
+* **JS require/include support**::
 
-    require("path or http");
+    require("path or http"); // or
+    include("path or http");
 
 
 * **SCSS compile and imports support** See SCSS_ for more information about language::
@@ -51,7 +52,7 @@ Features
     @import 'compass/reset'
 
 
-* **Boilerrplate framework support** Ex. ::
+* **Boilerplate framework support** Ex. ::
 
     @import url(zeta://boilerplate.css);
 
