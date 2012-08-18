@@ -76,9 +76,11 @@ class Packer(object):
             if not self.args.compress:
                 yield parser.comment_template % ("=" * 10)
                 if parent:
-                    from_path = parent.replace(LIBDIR, 'zeta:/') if parent.startswith(LIBDIR) else op.relpath(parent, self.path)
+                    from_path = parent.replace(LIBDIR, 'zeta:/') if parent.startswith(
+                        LIBDIR) else op.relpath(parent, self.path)
                     yield parser.comment_template % "From: '%s'" % from_path
-                target_path = path.replace(LIBDIR, 'zeta:/') if path.startswith(LIBDIR) else op.relpath(path, self.path)
+                target_path = path.replace(LIBDIR, 'zeta:/') if path.startswith(
+                    LIBDIR) else op.relpath(path, self.path)
                 yield parser.comment_template % "Zeta import: '%s'" % target_path
                 yield src
                 yield '\n\n'

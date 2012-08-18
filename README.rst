@@ -3,6 +3,10 @@ Zeta library
 
 **Zeta library** is a framework allows to create, collect and pack css, scss, js files much easier. Documentation_ during development.
 
+.. image:: https://secure.travis-ci.org/klen/zeta-library.png?branch=develop
+    :target: http://travis-ci.org/klen/zeta-library
+    :alt: Build Status
+
 .. contents::
 
 

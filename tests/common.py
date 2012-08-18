@@ -24,9 +24,9 @@ class TestPacker(unittest.TestCase):
         js_file = op.join(BASEDIR, 'custom', 'custom.js')
         Packer(js_file, FakeArgs(
             directory=op.join(BASEDIR, 'custom'),
-            )).pack()
+        )).pack()
         self.assertTrue(
-                'fake' in open(op.join(BASEDIR, 'custom', '_custom.js')).read())
+            'fake' in open(op.join(BASEDIR, 'custom', '_custom.js')).read())
 
     def test_pack(self):
         css_file = op.join(self.folder, 'main.css')
