@@ -55,6 +55,7 @@ META_DATA = dict(
     },
 
     install_requires = install_requires,
+    test_suite='tests',
 )
 
 if __name__ == "__main__":

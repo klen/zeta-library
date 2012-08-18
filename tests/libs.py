@@ -10,7 +10,7 @@ class LibsTest(unittest.TestCase):
 
     def test_jquery(self):
         Packer(op.join(self.folder, 'jquery.js'),
-                FakeArgs()).pack()
+               FakeArgs()).pack()
         self.assertEqual(
             open(op.join(self.folder, '_jquery.js')).read(),
             open(op.join(self.folder, '_jquery.js.orig')).read()
@@ -18,7 +18,7 @@ class LibsTest(unittest.TestCase):
 
     def test_underscore(self):
         Packer(op.join(self.folder, 'underscore.js'),
-                FakeArgs()).pack()
+               FakeArgs()).pack()
         self.assertEqual(
             open(op.join(self.folder, '_underscore.js')).read(),
             open(op.join(self.folder, '_underscore.js.orig')).read()
@@ -26,7 +26,7 @@ class LibsTest(unittest.TestCase):
 
     def test_blueprint(self):
         Packer(op.join(self.folder, 'blueprint.css'),
-                FakeArgs()).pack()
+               FakeArgs()).pack()
         self.assertEqual(
             open(op.join(self.folder, '_blueprint.css')).read(),
             open(op.join(self.folder, '_blueprint.css.orig')).read()
@@ -34,7 +34,7 @@ class LibsTest(unittest.TestCase):
 
     def test_boilerplate(self):
         Packer(op.join(self.folder, 'boilerplate.css'),
-                FakeArgs()).pack()
+               FakeArgs()).pack()
         self.assertEqual(
             open(op.join(self.folder, '_boilerplate.css')).read(),
             open(op.join(self.folder, '_boilerplate.css.orig')).read()
@@ -42,7 +42,7 @@ class LibsTest(unittest.TestCase):
 
     def test_compass(self):
         Packer(op.join(self.folder, 'compass.scss'),
-                FakeArgs()).pack()
+               FakeArgs()).pack()
         self.assertEqual(
             open(op.join(self.folder, '_compass.scss')).read(),
             open(op.join(self.folder, '_compass.scss.orig')).read()

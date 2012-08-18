@@ -304,7 +304,7 @@ form.inline p { margin-bottom:0; }
 
 /* Use this class on any .span / container to see the grid. */
 .showgrid {
-  background: url(../../libs/blueprint/src/grid.png);
+  background: url(../../zetalibrary/libs/blueprint/src/grid.png);
 }
 
 
